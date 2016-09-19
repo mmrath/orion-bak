@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import uy.montdeo.orion.core.exception.EntityNotFoundException;
 import uy.montdeo.orion.database.entity.Country;
 import uy.montdeo.orion.database.repository.CountryRepository;
-import uy.montdeo.orion.test.AbstractModuleLocationSupport;
+import uy.montdeo.orion.test.ModuleAddressSupport;
 import uy.montdeo.orion.test.AbstractUnitaryTestSupport;
 
 /**
@@ -25,7 +25,7 @@ import uy.montdeo.orion.test.AbstractUnitaryTestSupport;
  * @see AbstractUnitaryTestSupport
  * @see CountryRepository
  */
-public class CountryRepositoryTestSuite extends AbstractUnitaryTestSupport implements AbstractModuleLocationSupport {
+public class CountryRepositoryTestSuite extends AbstractUnitaryTestSupport implements ModuleAddressSupport {
 	
 	@Autowired
 	private CountryRepository countryRepository;

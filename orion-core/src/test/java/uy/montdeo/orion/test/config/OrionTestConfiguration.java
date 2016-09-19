@@ -1,5 +1,6 @@
 package uy.montdeo.orion.test.config;
 
+import static org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType.HAL;
 import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.HSQL;
 
 import java.util.Properties;
@@ -14,13 +15,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
-import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -35,11 +37,13 @@ import liquibase.integration.spring.SpringLiquibase;
 @EnableAutoConfiguration(
 	exclude = { 	LiquibaseAutoConfiguration.class	}
 )
-@EnableConfigurationProperties(value = { JpaProperties.class })
+@EnableConfigurationProperties(value = { JpaProperties.class, ServerProperties.class })
+@EnableHypermediaSupport(type = HAL)
 @EnableJpaRepositories(
 	basePackages = {	"uy.montdeo.orion.database.repository"	},
 	repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class
 )
+@EnableSpringDataWebSupport
 @EnableTransactionManagement
 @EnableWebMvc
 public class OrionTestConfiguration {
@@ -48,7 +52,7 @@ public class OrionTestConfiguration {
 
 	@Autowired
 	private JpaProperties jpaProperties;
-
+	
 	/**
 	 * Method to verify that all dependencies and requirements have been set.
 	 * 
@@ -58,11 +62,6 @@ public class OrionTestConfiguration {
 	@PostConstruct
 	public void init() {
 		log.info("Orion - OrionTestConfiguration has been successfully initialized.");
-	}
-
-	@Bean
-	public EmbeddedServletContainerFactory servletContainer() {
-		return new TomcatEmbeddedServletContainerFactory();
 	}
 
 	@Bean

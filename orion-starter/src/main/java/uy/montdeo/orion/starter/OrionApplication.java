@@ -22,9 +22,7 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import liquibase.integration.spring.SpringLiquibase;
@@ -103,14 +101,6 @@ public class OrionApplication {
 	@Bean
 	public LocaleResolver localeResolver() {
 		return new SessionLocaleResolver();
-	}
-	
-	@Bean
-	public static HandlerInterceptor localeInterceptor() {
-		LocaleChangeInterceptor locale = new LocaleChangeInterceptor();
-			locale.setParamName("lang");
-			
-		return locale;
 	}
 	
 }

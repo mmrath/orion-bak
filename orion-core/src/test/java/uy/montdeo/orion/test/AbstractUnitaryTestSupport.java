@@ -1,7 +1,7 @@
 package uy.montdeo.orion.test;
 
 import static java.util.Locale.forLanguageTag;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.MOCK;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 import java.util.Locale;
 
@@ -28,7 +28,7 @@ import uy.montdeo.orion.test.config.OrionTestConfiguration;
  * @see SpringBootTest
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { OrionTestConfiguration.class  }, webEnvironment = MOCK)
+@SpringBootTest(classes = { OrionTestConfiguration.class  }, webEnvironment = RANDOM_PORT)
 public abstract class AbstractUnitaryTestSupport extends AbstractTransactionalJUnit4SpringContextTests {
 	
 	@Autowired
@@ -62,7 +62,6 @@ public abstract class AbstractUnitaryTestSupport extends AbstractTransactionalJU
 		NOT_FOUND_VALUE_MSG = messageSource.getMessage("error.404.attribute", new String[] { TEXT_DUMMY}, LANGUAGE_EN_US);
 		WELCOME_MSG = messageSource.getMessage("label.welcome", null, LANGUAGE_EN_US);
 		ERROR_MSG = messageSource.getMessage("error.500.title", null, LANGUAGE_EN_US);
-		
 	}
 	
 	@After

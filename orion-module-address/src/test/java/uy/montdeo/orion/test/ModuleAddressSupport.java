@@ -1,6 +1,6 @@
 package uy.montdeo.orion.test;
 
-public interface AbstractModuleLocationSupport {
+public interface ModuleAddressSupport {
 	
 	public String TEMPLATE_URL_COUNTRIES		= "/services/rest/countries";
 	public String TEMPLATE_URL_COUNTRY			= "/services/rest/countries/{id}";

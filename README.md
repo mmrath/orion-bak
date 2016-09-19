@@ -60,8 +60,15 @@ Optionally, can be used along with these technologies:
 
 Property | Value
 --- | ---
+*orion.certificate.alias* | **Alias for the SSL certificate**
+*orion.certificate.password* | **Password for the SSL certificate**
 *orion.consul.host* | **Your Consul server name**
 *orion.consul.port* | **Your Consul server port**
+*orion.database.host* | **Your database server name**
+*orion.database.idle* | **Number of idle connections**
+*orion.database.max* | **Number of maximum connections**
+*orion.database.min* | **Number of minimum connections**
+*orion.domain* | **Internet domain for the platform**
 *orion.log.level* | **Level for logging information (TRACE, DEBUG, INFO, WARN, ERROR, ALL)**
 *orion.keystore.path* | **Path for the keystore used by the platform**
 *orion.keystore.password* | **Password for the keystore used by the platform**
