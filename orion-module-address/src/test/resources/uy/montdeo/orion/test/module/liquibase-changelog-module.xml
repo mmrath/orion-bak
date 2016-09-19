@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    
+    <property name="id.city.ar" 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'AR')" /> 
+    <property name="id.city.mo" 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'MO')" /> 
+    <property name="id.city.ma" 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'MA')" />
+    <property name="id.city.pa" 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'PA')" />
+    <property name="id.city.pe" 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'PE')" />
+    
+    <includeAll path="classpath*:/uy/montdeo/orion/test/data" relativeToChangelogFile="false" />
+        
+ </databaseChangeLog>
