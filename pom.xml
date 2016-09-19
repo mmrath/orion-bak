@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- PROJECT INHERITANCE -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.4.0.RELEASE</version>
+  </parent>
+
+  <!-- PROJECT INFORMATION -->
+  <groupId>uy.montdeo</groupId>
+  <artifactId>orion</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Orion - Main</name>
+  <description>Maven project containing the common values and settings for all the platform components.</description>
+  <inceptionYear>2016</inceptionYear>
+  <url>https://www.orion.uy</url>
+
+  <!-- ORGANIZATION -->
+  <organization>
+    <name>Montdeo Uruguay</name>
+    <url>https://www.montdeo.uy</url>
+  </organization>
+
+  <!-- SOURCE CODE VERSIONING -->
+  <scm>
+    <url>https://github.com/montdeo/orion</url>
+  </scm>
+
+  <!-- ISSUES MANAGEMENT -->
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/montdeo/orion/issues</url>
+  </issueManagement>
+
+  <!-- DEVELOPERS -->
+  <developers>
+    <developer>
+      <id>fabian.lobo</id>
+      <email>lobofa@gmail.com</email>
+      <name>Fabian Lobo</name>
+      <organization>${project.organization.name}</organization>
+      <organizationUrl>${project.organization.url}</organizationUrl>
+      <roles>
+        <role>MANAGER</role>
+        <role>DEVELOPER</role>
+      </roles>
+      <timezone>-03</timezone>
+    </developer>
+  </developers>
+
+  <!-- PREREQUISITES -->
+  <prerequisites>
+    <maven>3.3</maven>
+  </prerequisites>
+  
+  </project>
