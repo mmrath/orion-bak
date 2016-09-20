@@ -159,6 +159,8 @@ public class DocumentFormatRepositoryControllerTestSuite extends AbstractRestInt
 	@Test
 	public void testGetDocumentFormatForCountryAndType_withInvalidId_shouldReturnObjectNotFound() {
 		try {
+			NOT_FOUND_VALUE_MSG = messageSource.getMessage("error.404.attribute", new Integer[] { ID_100000}, LANGUAGE_EN_US);
+			
 			String body = template.getForObject(getSearchForCountryAndTypeEndpoint(), String.class, ID_100000, ID_100000);
 			assertNotNull("Results cannot be null", body);
 			
@@ -174,7 +176,7 @@ public class DocumentFormatRepositoryControllerTestSuite extends AbstractRestInt
 			
 			assertThat("Results - Code does not match with the expected value", code, is(ENTITY_NOT_FOUND.toString()));
 			assertThat("Results - Severity does not match with the expected value", severity, is(ERROR.toString()));
-			assertThat("Results - Description does not match with the expected value", description, is(NOT_FOUND_ID_MSG));
+			assertThat("Results - Description does not match with the expected value", description, is(NOT_FOUND_VALUE_MSG));
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}

@@ -68,6 +68,7 @@ Property | Value
 *orion.database.idle* | **Number of idle connections**
 *orion.database.max* | **Number of maximum connections**
 *orion.database.min* | **Number of minimum connections**
+*orion.log.path* | **Path to the folder to save the logs**
 *orion.log.level* | **Level for logging information (TRACE, DEBUG, INFO, WARN, ERROR, ALL)**
 *orion.keystore.path* | **Path for the keystore used by the platform**
 *orion.keystore.password* | **Password for the keystore used by the platform**

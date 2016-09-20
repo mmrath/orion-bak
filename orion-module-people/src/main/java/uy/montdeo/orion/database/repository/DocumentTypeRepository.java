@@ -12,7 +12,7 @@ import uy.montdeo.orion.database.entity.DocumentType;
  * @since 1.0
  * @see CrudRepository
  */
-@RepositoryRestResource(path = "documents/types", collectionResourceRel = "types", itemResourceRel = "type")
+@RepositoryRestResource(path = "document-types", collectionResourceRel = "types", itemResourceRel = "type")
 public interface DocumentTypeRepository extends CrudRepository<DocumentType, Integer> {
 
 }

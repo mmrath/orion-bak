@@ -36,7 +36,7 @@ public abstract class AbstractUnitaryTestSupport extends AbstractTransactionalJU
 	protected WebApplicationContext context;
 	
 	@Autowired
-	private MessageSource messageSource;
+	protected MessageSource messageSource;
 	
 	protected Locale LANGUAGE_EN_US 				= forLanguageTag("en-US;q=1.0,en;q=0.8");
 	

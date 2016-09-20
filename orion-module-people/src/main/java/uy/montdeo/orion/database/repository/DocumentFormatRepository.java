@@ -14,7 +14,7 @@ import uy.montdeo.orion.database.entity.DocumentFormat;
  * @since 1.0
  * @see CrudRepository
  */
-@RepositoryRestResource(path = "documents/formats", collectionResourceRel = "formats", itemResourceRel = "format")
+@RepositoryRestResource(path = "document-formats", collectionResourceRel = "formats", itemResourceRel = "format")
 public interface DocumentFormatRepository extends CrudRepository<DocumentFormat, Integer> {
 	
 	@RestResource(path = "forCountryAndType", rel = "forCountryAndType")

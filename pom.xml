@@ -448,7 +448,10 @@
 
       <!-- PROPERTIES -->
       <properties>
-        <orion.spring-profiles.active>default</orion.spring-profiles.active>
+        <orion.database.name>orion</orion.database.name>
+        <orion.database.password>orion</orion.database.password>
+        <orion.database.username>orion</orion.database.username>
+        <orion.profiles.active>default, local</orion.profiles.active>
       </properties>
 
       <!-- DEPENDENCIES -->
@@ -476,7 +479,7 @@
       <properties>
         <skipTests>false</skipTests>
         
-        <orion.spring-profiles.active>default, testing</orion.spring-profiles.active>
+        <orion.profiles.active>default, local, testing</orion.profiles.active>
       </properties>
 
     </profile>
@@ -493,7 +496,7 @@
       <properties>
         <skipTests>false</skipTests>
         
-        <orion.spring-profiles.active>default, testing</orion.spring-profiles.active>
+        <orion.profiles.active>default, local, testing</orion.profiles.active>
       </properties>
 
       <!-- ARTIFACTS MANAGEMENT -->
@@ -518,6 +521,58 @@
           </plugin>
         </plugins>
       </build>
+
+    </profile>
+    
+    <!-- POSTGRESQL -->
+    <profile>
+      <id>postgresql</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <jdk>${java.version}</jdk>
+      </activation>
+
+      <!-- PROPERTIES -->
+      <properties>
+        <orion.profiles.active>default, postgresql</orion.profiles.active>
+      </properties>
+
+      <!-- DEPENDENCIES -->
+      <dependencies>
+
+        <!-- POSTGRESQL JDBC DRIVER -->
+        <dependency>
+          <groupId>org.postgresql</groupId>
+          <artifactId>postgresql</artifactId>
+        </dependency>
+
+      </dependencies>
+
+    </profile>
+
+    <!-- MYSQL -->
+    <profile>
+      <id>mysql</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <jdk>${java.version}</jdk>
+      </activation>
+
+      <!-- PROPERTIES -->
+      <properties>
+        <orion.profiles.active>default, mysql</orion.profiles.active>
+      </properties>
+
+      <!-- DEPENDENCIES -->
+      <dependencies>
+
+        <!-- MYSQL JDBC DRIVER -->
+        <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+      </dependencies>
 
     </profile>
 
