@@ -183,6 +183,72 @@ public class DocumentFormatRepositoryControllerTestSuite extends AbstractRestInt
 	}
 	
 	/****************************************************
+	 * 			GET TYPE FOR DOCUMENT FORMAT
+	 ****************************************************/
+		
+	@Test
+	public void testGetDocumentFormatType_withValidId_shouldReturnUnauthorized() {
+		try {
+			
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testGetDocumentFormatType_withValidId_shouldReturnResult() {
+		try {
+			String body = template.getForObject(getEndpoint(TEMPLATE_URL_DOCUMENT_FORMAT_TYPE), String.class, ID_000001);
+			assertNotNull("Results cannot be null", body);
+			
+			ReadContext context = JsonPath.parse(body, configuration);
+			
+			Integer id = context.read("$.id");
+			String name = context.read("$.name");
+						
+			assertNotNull("Results - ID cannot be null", id);
+			assertNotNull("Results - Name cannot be null", name);
+			assertThat("Results ID does not match with the ID passed", id, is(ID_000001));
+			
+			String hrefSelf = context.read("$._links.self.href");
+			String hrefType = context.read("$._links.type.href");
+			
+			assertNotNull("Results - HREF Self URL cannot be null", hrefSelf);
+			assertNotNull("Results - HREF Type URL cannot be null", hrefType);
+			
+			assertThat("Results - HREF Self URL does not match with the expected url", hrefSelf, is(getExpectedEndpoint(TEMPLATE_URL_DOCUMENT_TYPE)));
+			assertThat("Results - HREF Type URL does not match with the expected url", hrefType, is(getExpectedEndpoint(TEMPLATE_URL_DOCUMENT_TYPE)));
+			
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testGetDocumentFormatType_withInvalidId_shouldReturnObjectNotFound() {
+		try {
+			String body = template.getForObject(getEndpoint(TEMPLATE_URL_DOCUMENT_FORMAT_TYPE), String.class, ID_100000);
+			assertNotNull("Results cannot be null", body);
+			
+			ReadContext context = JsonPath.parse(body, configuration);
+			
+			String code = context.read("$.code");
+			String severity = context.read("$.severity");
+			String description = context.read("$.description");
+			
+			assertNotNull("Results - Code cannot be null", code);
+			assertNotNull("Results - Severity cannot be null", severity);
+			assertNotNull("Results - Description cannot be null", description);
+			
+			assertThat("Results - Code does not match with the expected value", code, is(ENTITY_NOT_FOUND.toString()));
+			assertThat("Results - Severity does not match with the expected value", severity, is(ERROR.toString()));
+			assertThat("Results - Description does not match with the expected value", description, is(NOT_FOUND_ID_MSG));
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+	
+	/****************************************************
 	 * 				GET COUNTRY FOR DOCUMENT FORMAT
 	 ****************************************************/
 	
