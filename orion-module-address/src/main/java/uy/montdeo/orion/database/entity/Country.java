@@ -18,16 +18,16 @@ import uy.montdeo.orion.core.AbstractTranslatableEntity;
  */
 @Entity
 @Table(
-		uniqueConstraints = {	
-			@UniqueConstraint(name = "UNQ_COUNTRY_ALPHA2CODE",  columnNames = "alpha2Code"),	
-			@UniqueConstraint(name = "UNQ_COUNTRY_ALPHA3CODE",  columnNames = "alpha3Code"),
-			@UniqueConstraint(name = "UNQ_COUNTRY_NUMERICCODE",  columnNames = "numericCode")
-		},
-		indexes = {	
-			@Index(name = "IDX_COUNTRY_ALPHA2CODE", columnList = "alpha2Code"),
-			@Index(name = "IDX_COUNTRY_ALPHA3CODE", columnList = "alpha3Code"),
-			@Index(name = "IDX_COUNTRY_NUMERICCODE", columnList = "numericCode")
-		}
+	uniqueConstraints = {	
+		@UniqueConstraint(name = "UNQ_COUNTRY_ALPHA2CODE",  columnNames = "alpha2Code"),	
+		@UniqueConstraint(name = "UNQ_COUNTRY_ALPHA3CODE",  columnNames = "alpha3Code"),
+		@UniqueConstraint(name = "UNQ_COUNTRY_NUMERICCODE",  columnNames = "numericCode")
+	},
+	indexes = {	
+		@Index(name = "IDX_COUNTRY_ALPHA2CODE", columnList = "alpha2Code"),
+		@Index(name = "IDX_COUNTRY_ALPHA3CODE", columnList = "alpha3Code"),
+		@Index(name = "IDX_COUNTRY_NUMERICCODE", columnList = "numericCode")
+	}
 )
 public class Country extends AbstractTranslatableEntity implements Serializable {
 

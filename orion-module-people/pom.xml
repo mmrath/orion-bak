@@ -25,11 +25,20 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>orion-core</artifactId>
     </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>orion-module-address</artifactId>
+    </dependency>
     
     <!-- TESTING -->
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>orion-core</artifactId>
+      <type>test-jar</type>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>orion-module-address</artifactId>
       <type>test-jar</type>
     </dependency>
 

@@ -1,0 +1,61 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <property name="id.country.uy"  value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_COUNTRY WHERE ${table.prefix}_ALPHA2CODE = 'UY')" />
+    <property name="id.country.ar"  value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_COUNTRY WHERE ${table.prefix}_ALPHA2CODE = 'AR')" />
+    <property name="id.country.br"  value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_COUNTRY WHERE ${table.prefix}_ALPHA2CODE = 'BR')" />
+    
+    <property name="id.doctype.ci"     value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'CI')" />
+    <property name="id.doctype.rut"    value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'RUT')" />
+    <property name="id.doctype.pass"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'PASSPORT')" />
+    <property name="id.doctype.cpf"    value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'CPF')" />
+    <property name="id.doctype.cnpj"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'CNPJ')" />
+    <property name="id.doctype.dni"    value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'DNI')" />
+    
+    <!-- DOCUMENTS -->
+    <changeSet id="insert-dummy-documents" author="fabian.lobo">
+    	<preConditions onFail="MARK_RAN">
+			<tableExists tableName="${table.prefix}_DOCUMENT" />
+		</preConditions>
+		
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_DOCUMENT(
+				${table.prefix}_COUNTRY_ID,
+                ${table.prefix}_TYPE_ID,
+                ${table.prefix}_VALUE,        
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				(${id.country.uy}, ${id.doctype.ci}, '01.111.111-1', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.ci}, '99.999.999-8', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.ci}, '99.999.999-7', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.ci}, '99.999.999-6', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.ci}, '99.999.999-5', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.rut}, '999.999.999.999', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.rut}, '999.999.999.998', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.rut}, '999.999.999.997', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.pass}, '99.999.999-9', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.pass}, '99.999.999-8', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, '99.999.999-9', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, '99.999.999-8', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, '99.999.999-7', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, '99.999.999-6', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, '99.999.999-5', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, '99.999.999-4', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cpf}, '999.999.999-99', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cpf}, '999.999.999-98', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cpf}, '999.999.999-97', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cpf}, '999.999.999-96', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cpf}, '999.999.999-95', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cnpj}, '99.999.999/9999-99', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cnpj}, '99.999.999/9999-98', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cnpj}, '99.999.999/9999-97', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cnpj}, '99.999.999/9999-96', 0, '${value.user}', '${value.user}');
+		</sql>
+			
+	</changeSet>
+	
+ </databaseChangeLog>

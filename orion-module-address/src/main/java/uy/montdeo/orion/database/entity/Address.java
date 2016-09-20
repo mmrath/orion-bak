@@ -26,7 +26,7 @@ import uy.montdeo.orion.core.AbstractEntity;
 @Audited
 @Entity
 @Table(
-		indexes = {	@Index(name = "IDX_CITY_SEARCH_BY", columnList = "street, number, zipCode")	}
+	indexes = {	@Index(name = "IDX_CITY_SEARCH_BY", columnList = "street, number, zipCode")	}
 )
 public class Address extends AbstractEntity implements Serializable {
 

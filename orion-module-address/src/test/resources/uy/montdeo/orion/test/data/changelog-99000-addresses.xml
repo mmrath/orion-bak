@@ -3,6 +3,12 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
        
+    <property name="id.city.ar"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'AR')" /> 
+    <property name="id.city.mo"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'MO')" /> 
+    <property name="id.city.ma"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'MA')" />
+    <property name="id.city.pa"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'PA')" />
+    <property name="id.city.pe"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'PE')" />
+    
     <!-- ADDRESSES -->
     <changeSet id="insert-dummy-addresses" author="fabian.lobo">
     	<preConditions onFail="MARK_RAN">

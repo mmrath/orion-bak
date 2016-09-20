@@ -14,7 +14,7 @@ import uy.montdeo.orion.database.entity.City;
  * 
  * @author fabian.lobo
  * @since 1.0
- * @see {@link CrudRepository}
+ * @see CrudRepository
  */
 @RepositoryRestResource(path = "cities", collectionResourceRel = "cities", itemResourceRel = "city")
 public interface CityRepository extends CrudRepository<City, Integer> {

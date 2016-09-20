@@ -14,7 +14,7 @@ import uy.montdeo.orion.database.entity.State;
  * 
  * @author fabian.lobo
  * @since 1.0
- * @see {@link CrudRepository}
+ * @see CrudRepository
  */
 @RepositoryRestResource(path = "states", collectionResourceRel = "states", itemResourceRel = "state")
 public interface StateRepository extends CrudRepository<State, Integer> {

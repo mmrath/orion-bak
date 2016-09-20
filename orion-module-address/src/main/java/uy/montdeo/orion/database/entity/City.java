@@ -23,15 +23,14 @@ import uy.montdeo.orion.core.AbstractTranslatableEntity;
  */
 @Entity
 @Table(
-		uniqueConstraints = {	@UniqueConstraint(name = "UNQ_CITY_CODE",  columnNames = "code")	},
-		indexes = {	@Index(name = "IDX_CITY_CODE", columnList = "code")	}
+	uniqueConstraints = {	@UniqueConstraint(name = "UNQ_CITY_CODE",  columnNames = "code")	},
+	indexes = {	@Index(name = "IDX_CITY_CODE", columnList = "code")	}
 )
 public class City extends AbstractTranslatableEntity implements Serializable {
 	
 	private static final long serialVersionUID = 6721561788701492551L;
 
 	/*  	FIELDS		 */
-	
 	@Column(length = 5, nullable = false)
 	private String code;
 	
@@ -46,7 +45,6 @@ public class City extends AbstractTranslatableEntity implements Serializable {
 	private Double longitude;
 	
 	/*  	GETTERS AND SETTERS 		*/
-
 	public String getCode() {									return code;							}
 	public void setCode(String code) {							this.code = code;						}
 	

@@ -3,6 +3,8 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
        
+    <property name="id.country.uy"  value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_COUNTRY WHERE ${table.prefix}_ALPHA2CODE = 'UY')" />
+    
     <!-- STATES -->
     <changeSet id="insert-states" author="fabian.lobo">
 		<preConditions onFail="MARK_RAN">

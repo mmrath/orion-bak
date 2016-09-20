@@ -23,8 +23,8 @@ import uy.montdeo.orion.core.AbstractTranslatableEntity;
  */
 @Entity
 @Table(
-		uniqueConstraints = {	@UniqueConstraint(name = "UNQ_STATE_CODE",  columnNames = "code")	},
-		indexes = {	@Index(name = "IDX_STATE_CODE", columnList = "code")	}
+	uniqueConstraints = {	@UniqueConstraint(name = "UNQ_STATE_CODE",  columnNames = "code")	},
+	indexes = {	@Index(name = "IDX_STATE_CODE", columnList = "code")	}
 )
 public class State extends AbstractTranslatableEntity implements Serializable {
 

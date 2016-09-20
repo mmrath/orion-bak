@@ -290,6 +290,20 @@
         <type>jar</type>
         <scope>compile</scope>
       </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>orion-module-address</artifactId>
+        <version>${project.version}</version>
+        <type>jar</type>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>orion-module-people</artifactId>
+        <version>${project.version}</version>
+        <type>jar</type>
+        <scope>compile</scope>
+      </dependency>
 
       <!-- QUERYDSL FRAMEWORK -->
       <dependency>
@@ -354,6 +368,20 @@
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>orion-core</artifactId>
+        <version>${project.version}</version>
+        <type>test-jar</type>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>orion-module-address</artifactId>
+        <version>${project.version}</version>
+        <type>test-jar</type>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>orion-module-people</artifactId>
         <version>${project.version}</version>
         <type>test-jar</type>
         <scope>test</scope>

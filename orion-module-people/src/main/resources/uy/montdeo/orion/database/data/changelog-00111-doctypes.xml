@@ -1,0 +1,32 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+        
+    <!-- DOCUMENT TYPES -->
+    <changeSet id="insert-document-types" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<and>
+				<tableExists tableName="${table.prefix}_DOCUMENT_TYPE" />
+				<tableIsEmpty tableName="${table.prefix}_DOCUMENT_TYPE" />
+			</and>
+		</preConditions>
+
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_DOCUMENT_TYPE(
+				${table.prefix}_CODE,  
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				('CI', 0, '${value.user}', '${value.user}'),
+				('RUT', 0, '${value.user}', '${value.user}'),
+				('PASSPORT', 0, '${value.user}', '${value.user}'),
+                ('CPF', 0, '${value.user}', '${value.user}'),
+                ('CNPJ', 0, '${value.user}', '${value.user}'),
+                ('DNI', 0, '${value.user}', '${value.user}');
+		</sql>
+			
+	</changeSet>
+	
+ </databaseChangeLog>

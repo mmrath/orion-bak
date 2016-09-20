@@ -12,7 +12,7 @@ import uy.montdeo.orion.database.entity.Country;
  * 
  * @author fabian.lobo
  * @since 1.0
- * @see {@link CrudRepository}
+ * @see CrudRepository
  */
 @RepositoryRestResource(path = "countries", collectionResourceRel = "countries", itemResourceRel = "country")
 public interface CountryRepository extends CrudRepository<Country, Integer>{
