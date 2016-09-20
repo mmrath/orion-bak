@@ -1,4 +1,4 @@
-package uy.montdeo.orion.starter;
+package uy.montdeo.orion;
 
 import java.util.Properties;
 
@@ -26,8 +26,8 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import liquibase.integration.spring.SpringLiquibase;
+import uy.montdeo.orion.core.container.OrionServletContainerFactory;
 import uy.montdeo.orion.core.database.JpaDatabaseAuditor;
-import uy.montdeo.orion.starter.container.OrionServletContainerFactory;
 
 /**
  * Class in charge of starting up and setting the platform application context.

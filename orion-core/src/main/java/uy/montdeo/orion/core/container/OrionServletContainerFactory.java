@@ -1,4 +1,4 @@
-package uy.montdeo.orion.starter.container;
+package uy.montdeo.orion.core.container;
 
 import org.apache.catalina.Context;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;

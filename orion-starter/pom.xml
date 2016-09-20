@@ -11,7 +11,7 @@
 
   <!-- PROJECT INFORMATION -->
   <artifactId>orion-starter</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
   <name>Orion - Starter</name>
   <description>Maven project containing the core elements for the platform starters.</description>
   <inceptionYear>2016</inceptionYear>
@@ -19,7 +19,7 @@
 
   <!-- PROPERTIES -->
   <properties>
-    <start-class>uy.montdeo.orion.starter.OrionApplication</start-class>
+    <start-class>uy.montdeo.orion.OrionApplication</start-class>
   </properties>
 
   <!-- DEPENDENCIES -->

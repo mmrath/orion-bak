@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
+import uy.montdeo.orion.OrionApplication;
 import uy.montdeo.orion.test.config.OrionTestConfiguration;
 
 /**
@@ -28,7 +29,7 @@ import uy.montdeo.orion.test.config.OrionTestConfiguration;
  * @see SpringBootTest
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { OrionTestConfiguration.class  }, webEnvironment = RANDOM_PORT)
+@SpringBootTest(classes = {	OrionApplication.class, OrionTestConfiguration.class  }, webEnvironment = RANDOM_PORT)
 public abstract class AbstractUnitaryTestSupport extends AbstractTransactionalJUnit4SpringContextTests {
 	
 	@Autowired
