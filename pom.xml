@@ -64,14 +64,12 @@
     <java.version>1.8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <skipTests>true</skipTests>
-    <start-class>uy.montdeo.orion.OrionApplication</start-class>
-
+    
     <!-- DEPENDENCIES -->
     <bootstrap.version>3.3.6</bootstrap.version>
     <liquibase.version>3.4.2</liquibase.version>
     <querydsl.version>3.7.3</querydsl.version>
     <querydsl-hql.version>1.9.7</querydsl-hql.version>
-    <reflections.version>0.9.10</reflections.version>
     <spring-cloud.version>1.1.2.RELEASE</spring-cloud.version>
     <spring-consul.version>1.0.2.RELEASE</spring-consul.version>
     <spring-envers.version>1.0.2.RELEASE</spring-envers.version>
@@ -83,30 +81,18 @@
 
   </properties>
 
+  <!-- MODULES -->
+  <modules>
+    <module>orion-common</module>
+    <module>orion-module-catalog</module>
+    <module>orion-module-finance</module>
+    <module>orion-module-people</module>
+    <module>orion-module-sso</module>
+  </modules>
+  
   <!-- ARTIFACT MANAGEMENT -->
   <build>
-
-    <!-- RESOURCE FILTERING -->
-    <resources>
-      <resource>
-        <directory>${basedir}/src/main/resources</directory>
-        <filtering>true</filtering>
-        <includes>
-          <include>**/application*.yml</include>
-          <include>**/application*.properties</include>
-          <include>**/liquibase-changelog.xml</include>
-        </includes>
-      </resource>
-      <resource>
-        <directory>${basedir}/src/main/resources</directory>
-        <excludes>
-          <exclude>**/application*.yml</exclude>
-          <exclude>**/application*.properties</exclude>
-          <exclude>**/liquibase-changelog.xml</exclude>
-        </excludes>
-      </resource>
-    </resources>
-
+  
     <!-- PLUGINS -->
     <pluginManagement>
       <plugins>
@@ -132,6 +118,31 @@
           <version>${sonar.version}</version>
         </plugin>
 
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <versionRange>[1.4.0.RELEASE,)</versionRange>
+                    <goals>
+                      <goal>build-info</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -195,12 +206,6 @@
           <includes>
             <include>**/integration/*/**TestSuite.java</include>
           </includes>
-          <systemPropertyVariables>
-            <javax.net.ssl.keyStore>${orion.keystore.path}</javax.net.ssl.keyStore>
-            <javax.net.ssl.keyStorePassword>${orion.keystore.password}</javax.net.ssl.keyStorePassword>
-            <javax.net.ssl.trustStore>${orion.truststore.path}</javax.net.ssl.trustStore>
-            <javax.net.ssl.trustStorePassword>${orion.truststore.password}</javax.net.ssl.trustStorePassword>
-          </systemPropertyVariables>
         </configuration>
       </plugin>
 
@@ -275,36 +280,21 @@
       </plugin>
 
     </plugins>
-
   </build>
-
+  
   <!-- DEPENDENCY MANAGEMENT -->
   <dependencyManagement>
     <dependencies>
-
-      <!-- PLATFORM MODULES -->
+    
+      <!-- PLATFORM LIBRARIES -->
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>orion-core</artifactId>
+        <artifactId>orion-common</artifactId>
         <version>${project.version}</version>
         <type>jar</type>
         <scope>compile</scope>
       </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>orion-module-address</artifactId>
-        <version>${project.version}</version>
-        <type>jar</type>
-        <scope>compile</scope>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>orion-module-people</artifactId>
-        <version>${project.version}</version>
-        <type>jar</type>
-        <scope>compile</scope>
-      </dependency>
-
+      
       <!-- QUERYDSL FRAMEWORK -->
       <dependency>
         <groupId>com.mysema.querydsl</groupId>
@@ -331,6 +321,13 @@
       <!-- SPRING CLOUD - CONSUL FRAMEWORK -->
       <dependency>
         <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-commons</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>jar</type>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-consul</artifactId>
         <version>${spring-consul.version}</version>
         <type>jar</type>
@@ -346,15 +343,6 @@
         <scope>compile</scope>
       </dependency>
       
-      <!-- REFLECTIONS -->
-      <dependency>
-        <groupId>org.reflections</groupId>
-        <artifactId>reflections</artifactId>
-        <version>${reflections.version}</version>
-        <type>jar</type>
-        <scope>compile</scope>
-      </dependency>
-
       <!-- WEBJARS FRAMEWORKS -->
       <dependency>
         <groupId>org.webjars</groupId>
@@ -363,30 +351,7 @@
         <type>jar</type>
         <scope>compile</scope>
       </dependency>
-
-      <!-- TESTING -->
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>orion-core</artifactId>
-        <version>${project.version}</version>
-        <type>test-jar</type>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>orion-module-address</artifactId>
-        <version>${project.version}</version>
-        <type>test-jar</type>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>orion-module-people</artifactId>
-        <version>${project.version}</version>
-        <type>test-jar</type>
-        <scope>test</scope>
-      </dependency>
-
+      
     </dependencies>
   </dependencyManagement>
   <dependencies>
@@ -434,39 +399,10 @@
     </dependency>
 
   </dependencies>
-
+  
   <!-- PROFILES -->
   <profiles>
-
-    <!-- LOCAL -->
-    <profile>
-      <id>local</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-        <jdk>${java.version}</jdk>
-      </activation>
-
-      <!-- PROPERTIES -->
-      <properties>
-        <orion.database.name>orion</orion.database.name>
-        <orion.database.password>orion</orion.database.password>
-        <orion.database.username>orion</orion.database.username>
-        <orion.profiles.active>default, local</orion.profiles.active>
-      </properties>
-
-      <!-- DEPENDENCIES -->
-      <dependencies>
-
-        <!-- HSQL EMBEDDED DATABASE -->
-        <dependency>
-          <groupId>org.hsqldb</groupId>
-          <artifactId>hsqldb</artifactId>
-        </dependency>
-
-      </dependencies>
-
-    </profile>
-
+    
     <!-- TESTING -->
     <profile>
       <id>testing</id>
@@ -478,12 +414,28 @@
       <!-- PROPERTIES -->
       <properties>
         <skipTests>false</skipTests>
+
+        <orion.database.ddl-auto>create-drop</orion.database.ddl-auto>
+        <orion.database.dialect>org.hibernate.dialect.HSQLDialect</orion.database.dialect>
+        <orion.database.url>jdbc:hsqldb:mem:${orion.database.name};shutdown=true</orion.database.url>
         
-        <orion.profiles.active>default, local, testing</orion.profiles.active>
+        <orion.profiles.active>default, testing</orion.profiles.active>
       </properties>
+      
+      <!-- DEPENDENCIES -->
+      <dependencies>
+
+        <!-- HSQL EMBEDDED DATABASE -->
+        <dependency>
+          <groupId>org.hsqldb</groupId>
+          <artifactId>hsqldb</artifactId>
+          <scope>test</scope>
+        </dependency>
+
+      </dependencies>
 
     </profile>
-
+    
     <!-- QUALITY -->
     <profile>
       <id>quality</id>
@@ -495,8 +447,6 @@
       <!-- PROPERTIES -->
       <properties>
         <skipTests>false</skipTests>
-        
-        <orion.profiles.active>default, local, testing</orion.profiles.active>
       </properties>
 
       <!-- ARTIFACTS MANAGEMENT -->
@@ -534,6 +484,11 @@
 
       <!-- PROPERTIES -->
       <properties>
+        
+        <orion.database.ddl-auto>update</orion.database.ddl-auto>
+        <orion.database.dialect>org.hibernate.dialect.PostgreSQLDialect</orion.database.dialect>
+        <orion.database.url>jdbc:postgresql://${orion.database.host}:5432/${orion.database.name}</orion.database.url>
+        
         <orion.profiles.active>default, postgresql</orion.profiles.active>
       </properties>
 
@@ -560,6 +515,11 @@
 
       <!-- PROPERTIES -->
       <properties>
+        
+        <orion.database.ddl-auto>update</orion.database.ddl-auto>
+        <orion.database.dialect>org.hibernate.dialect.MySQL57InnoDBDialect</orion.database.dialect>
+        <orion.database.url>jdbc:mysql://${orion.database.host}:3306/${orion.database.name}?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull</orion.database.url>
+        
         <orion.profiles.active>default, mysql</orion.profiles.active>
       </properties>
 
@@ -575,14 +535,6 @@
       </dependencies>
 
     </profile>
-
+  
   </profiles>
-
-  <!-- MODULES -->
-  <modules>
-    <module>orion-core</module>
-    <module>orion-module-address</module>
-    <module>orion-module-people</module>
-    <module>orion-starter</module>
-  </modules>
 </project>

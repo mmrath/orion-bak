@@ -12,15 +12,19 @@ This project was created based on the following Java technologies:
 
 - Spring Boot v1.4.0
 - Spring Framework v4.3.27
+- Spring Cloud Consul v1.0.2
 - Spring HATEOAS v0.20.0
 - Apache Tomcat v8.0.36
-- HSQL Database Engine v2.3.3
 - HashiCorp Consul v0.7.0
 
-Optionally, can be used along with these technologies:
+This project supports the following databases:
 
 - MySQL v5.7
 - PostgreSQL v9.5
+
+For unitary and integration testings, the following in-memory database was used:
+
+- HSQL Database Engine v2.3.3
 
 -----------------------------------------------------------------------------------------------------------------------------
 2. Setup
@@ -60,16 +64,12 @@ Optionally, can be used along with these technologies:
 
 Property | Value
 --- | ---
-*orion.certificate.alias* | **Alias for the SSL certificate**
-*orion.certificate.password* | **Password for the SSL certificate**
-*orion.consul.host* | **Your Consul server name**
+*orion.consul.host* | **Your Consul server host name**
 *orion.consul.port* | **Your Consul server port**
-*orion.database.host* | **Your database server name**
+*orion.database.host* | **Your database server host name**
 *orion.database.idle* | **Number of idle connections**
 *orion.database.max* | **Number of maximum connections**
 *orion.database.min* | **Number of minimum connections**
-*orion.log.path* | **Path to the folder to save the logs**
-*orion.log.level* | **Level for logging information (TRACE, DEBUG, INFO, WARN, ERROR, ALL)**
 *orion.keystore.path* | **Path for the keystore used by the platform**
 *orion.keystore.password* | **Password for the keystore used by the platform**
 *orion.keystore.type* | **Type of keystore**
@@ -109,11 +109,78 @@ Property | Value
 2.5.1 - Using the Maven wrapper
 
 - Open a terminal and go to the root project
-- Run the following command: mvnw clean install -P\<local|mysql|postgresql>
+- Run the following command: mvnw clean install -P\<testing|mysql|postgresql>
 
 2.5.2 - Using the Eclipse IDE
 
 - In Run > Run Configurations, create a new Maven build.
 - Select the root project as the base directory
 - Goals: clean install
-- Profiles: local|mysql|postgresql
+- Profiles: testing|mysql|postgresql
+
+-----------------------------------------------------------------------------------------------------------------------------
+3. Database setup
+-----------------------------------------------------------------------------------------------------------------------------
+
+- Install the database server you choose (MySQL or PostgreSQL are supported for now).
+- Update in your settings.xml file the 'orion.database.*' properties to point to your database host.
+- Create the database user and schema using the provided SQL script found in the '/sql' folder.  
+- Open a terminal and go to the root project
+- Run the following commands: 
+
+   mvnw clean install -P\<mysql|postgresql>
+
+   java -jar \<module>/target/orion-<module>-<version>.jar
+   
+- The module will start, connect to the database, and create all the needed database elements.
+
+-----------------------------------------------------------------------------------------------------------------------------
+4. Testing
+-----------------------------------------------------------------------------------------------------------------------------
+
+- Open a terminal and go to the root project
+- Run the following commands: 
+
+   mvnw install -Ptesting
+   
+- This will execute all the unitary and integration tests. 
+
+-----------------------------------------------------------------------------------------------------------------------------
+6. Quality Control
+-----------------------------------------------------------------------------------------------------------------------------
+
+- In your settings.xml file, add this new property (pointing to the Sonar URL).
+	
+Property | Value
+--- | ---
+*sonar.host.url* | **Your Sonar server URL (eg. http://localhost:9000)**
+	
+
+- Open a terminal and go to the root project
+- Run the following commands: 
+
+   mvnw install -Pquality
+   
+- This will execute the Sonar Maven plugin and save the analysis into the configured Sonar.
+
+-----------------------------------------------------------------------------------------------------------------------------
+7. Integration with Consul
+-----------------------------------------------------------------------------------------------------------------------------
+
+- Download Consul v0.7.0.
+- Start Consul by executing the following command:
+
+consul agent -bootstrap -ui -config-dir \<ROOT_PROJECT>/files
+
+- This will start the Orion DC with the service checks for all the modules. Consul will check the platform modules' 
+  health status by pinging the following URL
+
+   - https://\<mvn.server.address>:\<mvn.mgmt.port>/manage/health
+
+-----------------------------------------------------------------------------------------------------------------------------
+8. Known issues
+-----------------------------------------------------------------------------------------------------------------------------
+
+8.1 - Get https://\<module.server.host>:\<module.mgmt.port>/manage/health: x509: certificate signed by unknown authority
+
+- Add the SSL certificate to your server's trusted certificate store

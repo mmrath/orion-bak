@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    
+    <springProperty scope="context" name="LOG_LEVEL" source="logging.level.root" defaultValue="INFO"/>
+    <springProperty scope="context" name="LOG_PATH" source="logging.path" defaultValue="${java.io.tmpdir:-/tmp}"/>
+    <springProperty scope="context" name="LOG_FILE" source="logging.file" defaultValue="orion.log"/>
+    
+    <appender name="LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	   	<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		<file>${LOG_PATH}/${LOG_FILE}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/${LOG_FILE}-%d{yyyy-MM-dd}.zip</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+	</appender>
+	    
+    <!-- configuration to be enabled when the "testing" profile is not active -->
+	<springProfile name="!testing">
+    	<root level="${LOG_LEVEL}">
+	        <appender-ref ref="LOG_FILE" />
+	    </root>
+	</springProfile>
+	
+	<!-- configuration to be enabled when the "testing" profile is active -->
+	<springProfile name="testing">
+    	<root level="${LOG_LEVEL}">
+	        <appender-ref ref="CONSOLE" />
+	    </root>
+	</springProfile>
+    
+</configuration>

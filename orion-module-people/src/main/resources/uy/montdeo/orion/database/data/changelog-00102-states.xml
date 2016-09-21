@@ -1,0 +1,50 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <property name="id.country.uy"  value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_COUNTRY WHERE ${table.prefix}_ALPHA2CODE = 'UY')" />
+    
+    <!-- STATES -->
+    <changeSet id="insert-states" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<and>
+				<tableExists tableName="${table.prefix}_STATE" />
+				<tableIsEmpty tableName="${table.prefix}_STATE" />
+			</and>
+		</preConditions>
+		
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_STATE(
+                ${table.prefix}_KEY,
+                ${table.prefix}_TRANSLATABLE,
+				${table.prefix}_CODE, 
+				${table.prefix}_COUNTRY_ID, 
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				('entity.state.UY_AR', true, 'AR', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_CA', true, 'CA', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_CE', true, 'CE', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_CO', true, 'CO', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_DU', true, 'DU', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_FL', true, 'FL', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_FD', true, 'FD', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_LA', true, 'LA', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_MA', true, 'MA', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_MO', true, 'MO', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_PA', true, 'PA', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_RN', true, 'RN', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_RI', true, 'RI', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_RO', true, 'RO', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_SA', true, 'SA', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_SJ', true, 'SJ', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_SO', true, 'SO', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_TA', true, 'TA', ${id.country.uy}, 0, '${value.user}', '${value.user}'),
+				('entity.state.UY_TT', true, 'TT', ${id.country.uy}, 0, '${value.user}', '${value.user}');
+		</sql>
+		
+	</changeSet>
+	
+ </databaseChangeLog>

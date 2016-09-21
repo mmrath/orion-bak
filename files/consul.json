@@ -1,0 +1,77 @@
+{
+  "datacenter": "orion-dc",
+  "data_dir": "C:\\Tools\\consul-0.7.0\\data\\orion",
+  "server_name": "consul.orion.uy",
+  "server": true,
+  "advertise_addr": "172.23.1.240",
+  "encrypt": "rdFnsnJS9tobnKClYrinZg==",
+  "services": [
+    {
+      "id": "orion-consul",
+      "name": "orion-consul",
+      "tags": [		"master"	],
+      "address": "consul.orion.uy",
+      "port": 8000
+    },
+    {
+      "id": "orion-catalog-8800",
+      "name": "orion-catalog",
+      "tags": [		"slave"		],
+      "address": "catalog.kudos.uy",
+      "port": 8800,
+	  "check": {
+		"id": "service:orion-catalog-8800",
+		"name": "Orion Catalog heartbeat endpoint",
+		"http": "https://catalog.orion.uy:15000/manage/health",
+		"interval": "10s",
+		"service_id": "orion-catalog-8800",
+		"timeout": "10s"
+	  }
+    },
+    {
+      "id": "orion-finance-8810",
+      "name": "orion-finance",
+      "tags": [		"slave"		],
+      "address": "finance.kudos.uy",
+      "port": 8810,
+	  "check": {
+		"id": "service:orion-finance-8810",
+		"name": "Orion Finance heartbeat endpoint",
+		"http": "https://finance.orion.uy:15010/manage/health",
+		"interval": "10s",
+		"service_id": "orion-finance-8810",
+		"timeout": "10s"
+	  }
+    },
+    {
+      "id": "orion-people-8820",
+      "name": "orion-people",
+      "tags": [		"slave"		],
+      "address": "people.kudos.uy",
+      "port": 8820,
+	  "check": {
+		"id": "service:orion-people-8820",
+		"name": "Orion People heartbeat endpoint",
+		"http": "https://people.orion.uy:15020/manage/health",
+		"interval": "10s",
+		"service_id": "orion-people-8820",
+		"timeout": "10s"
+	  }
+    },
+    {
+      "id": "orion-sso-8830",
+      "name": "orion-sso",
+      "tags": [		"slave"		],
+      "address": "sso.kudos.uy",
+      "port": 8830,
+	  "check": {
+		"id": "service:orion-sso-8830",
+		"name": "Orion SSO heartbeat endpoint",
+		"http": "https://sso.orion.uy:15030/manage/health",
+		"interval": "10s",
+		"service_id": "orion-sso-8830",
+		"timeout": "10s"
+	  }
+    }
+  ]
+}
