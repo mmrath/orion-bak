@@ -1,0 +1,26 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <!-- RELATIONSHIP BETWEEN ROLES AND PERMISSIONS -->
+	<changeSet id="insert-roles-permissions" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<and>
+				<tableExists tableName="${table.prefix}_USER_ROLE_PERMISSIONS" />
+				<tableIsEmpty tableName="${table.prefix}_USER_ROLE_PERMISSIONS" />
+			</and>
+		</preConditions>
+
+		<!-- PERMISSIONS FOR THE ADMINISTRATOR ROLE -->
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_USER_ROLE_PERMISSIONS SELECT r.${table.prefix}_ID AS ${table.prefix}_USER_ROLE_ID, p.${table.prefix}_ID AS ${table.prefix}_PERMISSIONS_ID FROM ${table.prefix}_USER_ROLE_PERMISSION p, ${table.prefix}_USER_ROLE r WHERE r.${table.prefix}_NAME = 'ADMINISTRATOR' ORDER BY p.${table.prefix}_ID ASC;
+		</sql>
+
+		<!-- PERMISSIONS FOR THE GUEST ROLE -->
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_USER_ROLE_PERMISSIONS SELECT r.${table.prefix}_ID AS ${table.prefix}_USER_ROLE_ID, p.${table.prefix}_ID AS ${table.prefix}_PERMISSIONS_ID FROM ${table.prefix}_USER_ROLE_PERMISSION p, ${table.prefix}_USER_ROLE r WHERE r.${table.prefix}_NAME = 'GUEST' AND p.${table.prefix}_TOKEN LIKE 'VIEW_%' ORDER BY p.${table.prefix}_ID ASC;
+		</sql>
+	</changeSet>
+	
+ </databaseChangeLog>

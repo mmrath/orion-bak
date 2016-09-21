@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+
 import uy.montdeo.orion.database.AbstractEntity;
 import uy.montdeo.orion.database.entity.address.Country;
 
@@ -21,6 +24,7 @@ import uy.montdeo.orion.database.entity.address.Country;
  * @author fabian.lobo
  * @since 1.0
  */
+@Audited
 @Entity
 @Table(
 	indexes = {	
@@ -32,14 +36,17 @@ public class Document extends AbstractEntity implements Serializable {
 	private static final long serialVersionUID = -3405592588685500603L;
 
 	/*  	FIELDS		 */
-	@ManyToOne(optional = false, fetch = EAGER)
 	@JoinColumn(nullable = false, 	foreignKey = @ForeignKey(name = "FK_DOCUMENT_COUNTRY"))
+	@ManyToOne(optional = false, fetch = EAGER)
+	@NotAudited
 	private Country country;
 	
-	@ManyToOne(optional = false, fetch = EAGER)
 	@JoinColumn(nullable = false, 	foreignKey = @ForeignKey(name = "FK_DOCUMENT_DOCTYPE"))
+	@ManyToOne(optional = false, fetch = EAGER)
+	@NotAudited
 	private DocumentType type;
 	
+	@Audited
 	@Column(length = 30, nullable = false)
 	private String value;
 

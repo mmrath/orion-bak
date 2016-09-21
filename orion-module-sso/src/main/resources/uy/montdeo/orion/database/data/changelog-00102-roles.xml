@@ -1,0 +1,31 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <!-- ROLES -->
+    <changeSet id="insert-roles" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<and>
+				<tableExists tableName="${table.prefix}_USER_ROLE" />
+				<tableIsEmpty tableName="${table.prefix}_USER_ROLE" />
+			</and>
+		</preConditions>
+
+		<insert tableName="${table.prefix}_USER_ROLE">
+			<column name="${table.prefix}_NAME" 					value="ADMINISTRATOR" />
+			<column name="${table.prefix}_COMMENTS" 				value="ROLE THAT GRANTS ACCESS TO ALL THE PLATFORM FUNCTIONALITIES" />
+			<column name="${table.prefix}_VERSION" 					value="0" />
+			<column name="${table.prefix}_CREATED_BY" 				value="${value.user}" />
+			<column name="${table.prefix}_LAST_MODIFIED_BY" 		value="${value.user}" />
+		</insert>
+		<insert tableName="${table.prefix}_USER_ROLE">
+			<column name="${table.prefix}_NAME" 					value="GUEST" />
+			<column name="${table.prefix}_COMMENTS"					value="ROLE THAT PERMITS A VIEW-ONLY ACCESS TO THE PLATFORM" />
+			<column name="${table.prefix}_VERSION" 					value="0" />
+			<column name="${table.prefix}_CREATED_BY" 				value="${value.user}" />
+			<column name="${table.prefix}_LAST_MODIFIED_BY" 		value="${value.user}" />
+		</insert>
+	</changeSet>
+	
+ </databaseChangeLog>
