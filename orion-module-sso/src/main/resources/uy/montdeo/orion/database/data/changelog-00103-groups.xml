@@ -15,11 +15,22 @@
 		<insert tableName="${table.prefix}_USER_GROUP">
 			<column name="${table.prefix}_ORGANIZATION_ID"          valueComputed="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'ORION')" />
             <column name="${table.prefix}_NAME"                     value="ORION ADMIN USERS" />
+            <column name="${table.prefix}_LANDING_URL"              value="/monitor" />
 			<column name="${table.prefix}_SCOPE" 					value="ALL" />
 			<column name="${table.prefix}_VERSION" 					value="0" />
 			<column name="${table.prefix}_CREATED_BY" 				value="${value.user}" />
 			<column name="${table.prefix}_LAST_MODIFIED_BY" 		value="${value.user}" />
 		</insert>
+    
+        <insert tableName="${table.prefix}_USER_GROUP">
+          <column name="${table.prefix}_ORGANIZATION_ID"            valueComputed="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'ORION')" />
+          <column name="${table.prefix}_NAME"                       value="ORION GUEST USERS" />
+          <column name="${table.prefix}_LANDING_URL"                value="/" />
+          <column name="${table.prefix}_SCOPE"                      value="ALL" />
+          <column name="${table.prefix}_VERSION"                    value="0" />
+          <column name="${table.prefix}_CREATED_BY"                 value="${value.user}" />
+          <column name="${table.prefix}_LAST_MODIFIED_BY"           value="${value.user}" />
+        </insert>
 								
 	</changeSet>
 	

@@ -7,13 +7,13 @@
     <changeSet id="insert-permissions" author="fabian.lobo">
 		<preConditions onFail="MARK_RAN">
 			<and>
-				<tableExists tableName="${table.prefix}_USER_ROLE_PERMISSION" />
-				<tableIsEmpty tableName="${table.prefix}_USER_ROLE_PERMISSION" />
+				<tableExists tableName="${table.prefix}_USER_GROUP_PERMISSION" />
+				<tableIsEmpty tableName="${table.prefix}_USER_GROUP_PERMISSION" />
 			</and>
 		</preConditions>
 		
 		<sql endDelimiter=";">
-			INSERT INTO ${table.prefix}_USER_ROLE_PERMISSION(
+			INSERT INTO ${table.prefix}_USER_GROUP_PERMISSION(
 				${table.prefix}_TOKEN, 
 				${table.prefix}_DESCRIPTION,
 				${table.prefix}_COMMENTS, 
@@ -21,11 +21,16 @@
 				${table.prefix}_CREATED_BY,
 				${table.prefix}_LAST_MODIFIED_BY
 			) VALUES
-				('VIEW_PERMISSION', 'VIEW PERMISSION', 'PERMISSION TO VIEW AN EXISTING ROLE PERMISSION INFORMATION', 0, '${value.user}', '${value.user}'),
-				('VIEW_ROLE', 'VIEW ROLE', 'PERMISSION TO VIEW AN EXISTING ROLE INFORMATION', 0, '${value.user}', '${value.user}'),
-				('ADD_ROLE', 'ADD A NEW ROLE', 'PERMISSION TO ADD A NEW ROLE', 0, '${value.user}', '${value.user}'),
-				('UPDATE_ROLE', 'UPDATES AN EXISTING ROLE', 'PERMISSION TO UPDATE AN EXISTING ROLE INFORMATION', 0, '${value.user}', '${value.user}'),
-				('DELETE_ROLE', 'DELETE AN EXISTING ROLE', 'PERMISSION TO DELETE AN EXISTING ROLE', 0, '${value.user}', '${value.user}'),
+				('VIEW_PERMISSION', 'VIEW PERMISSION', 'PERMISSION TO VIEW AN EXISTING GROUP PERMISSION INFORMATION', 0, '${value.user}', '${value.user}'),
+				('VIEW_ORGANIZATION', 'VIEW ORGANIZATION', 'PERMISSION TO VIEW AN EXISTING ORGANIZATION INFORMATION', 0, '${value.user}', '${value.user}'),
+				('ADD_ORGANIZATION', 'ADD A NEW ORGANIZATION', 'PERMISSION TO ADD A NEW ORGANIZATION', 0, '${value.user}', '${value.user}'),
+				('UPDATE_ORGANIZATION', 'UPDATES AN EXISTING ORGANIZATION', 'PERMISSION TO UPDATE AN EXISTING ORGANIZATION INFORMATION', 0, '${value.user}', '${value.user}'),
+                ('ACTIVATE_ORGANIZATION', 'ACTIVATE/DEACTIVATE AN EXISTING ORGANIZATION', 'PERMISSION TO ACTIVATE/DEACTIVATE AN EXISTING ORGANIZATION', 0, '${value.user}', '${value.user}'),
+				('DELETE_ORGANIZATION', 'DELETE AN EXISTING ORGANIZATION', 'PERMISSION TO DELETE AN EXISTING ORGANIZATION', 0, '${value.user}', '${value.user}'),
+                ('VIEW_GROUP', 'VIEW GROUP', 'PERMISSION TO VIEW AN EXISTING GROUP INFORMATION', 0, '${value.user}', '${value.user}'),
+                ('ADD_GROUP', 'ADD A NEW GROUP', 'PERMISSION TO ADD A NEW GROUP', 0, '${value.user}', '${value.user}'),
+                ('UPDATE_GROUP', 'UPDATES AN EXISTING GROUP', 'PERMISSION TO UPDATE AN EXISTING GROUP INFORMATION', 0, '${value.user}', '${value.user}'),
+                ('DELETE_GROUP', 'DELETE AN EXISTING GROUP', 'PERMISSION TO DELETE AN EXISTING GROUP', 0, '${value.user}', '${value.user}'),
 				('VIEW_USER', 'VIEW USER', 'PERMISSION TO VIEW AN EXISTING USER INFORMATION', 0, '${value.user}', '${value.user}'),
 				('ADD_USER', 'ADD A NEW USER', 'PERMISSION TO ADD A NEW USER', 0, '${value.user}', '${value.user}'),
 				('UPDATE_USER', 'UPDATES AN EXISTING USER', 'PERMISSION TO UPDATE AN EXISTING USER INFORMATION', 0, '${value.user}', '${value.user}'),

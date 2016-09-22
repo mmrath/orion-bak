@@ -45,9 +45,9 @@ public class User extends AbstractEntity implements Serializable {
 	
 	/*  	FIELDS		 */
 	@Audited
-	@JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "FK_USER_ROLE"))
+	@JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "FK_USER_GROUP"))
 	@ManyToOne(optional = false, fetch = EAGER)
-	private UserRole role;
+	private UserGroup group;
 	
 	@Audited
 	@JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "FK_USER_SETTINGS"))
@@ -102,8 +102,8 @@ public class User extends AbstractEntity implements Serializable {
 	private String comments;
 	
 	/*  	GETTERS AND SETTERS 		*/
-	public UserRole getRole() {											return role;									}
-	public void setRole(UserRole role) {								this.role = role;								}
+	public UserGroup getGroup() {										return group;									}
+	public void setGroup(UserGroup group) {								this.group = group;								}
 	
 	public UserSettings getSettings() {									return settings;								}
 	public void setSettings(UserSettings settings) {					this.settings = settings;						}
@@ -140,7 +140,7 @@ public class User extends AbstractEntity implements Serializable {
 		
 	/*  	CONSTRUCTORS		 */
 	public User() {
-		this.role = new UserRole();
+		this.group = new UserGroup();
 		this.settings = new UserSettings();
 	}
 

@@ -45,6 +45,10 @@ public class UserGroup extends AbstractEntity implements Serializable {
 	private String name;
 	
 	@Audited
+	@Column(length = 50, nullable = false)
+	private String landingUrl;
+	
+	@Audited
 	@JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "FK_GROUP_ORGANIZATION"))
 	@ManyToOne(optional = false, fetch = EAGER)
 	private Organization organization;
@@ -63,9 +67,21 @@ public class UserGroup extends AbstractEntity implements Serializable {
 	@ManyToMany(fetch = EAGER)
 	private Set<User> users;
 	
+	@Audited
+	@Fetch(SUBSELECT)
+	@JoinTable(
+		joinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "FK_GROUP_PERMISSION")), 
+		inverseJoinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "FK_PERMISSION_GROUP"))
+	)
+	@ManyToMany(fetch = EAGER)
+	private Set<UserGroupPermission> permissions;
+	
 	/*  	GETTERS AND SETTERS 		*/
 	public String getName() {											return name;									}
 	public void setName(String name) {									this.name = name;								}
+	
+	public String getLandingUrl() {										return landingUrl;								}
+	public void setLandingUrl(String landingUrl) {						this.landingUrl = landingUrl;					}
 	
 	public Organization getOrganization() {								return organization;							}
 	public void setOrganization(Organization organization) {			this.organization = organization;				}
@@ -75,5 +91,8 @@ public class UserGroup extends AbstractEntity implements Serializable {
 	
 	public Set<User> getUsers() {										return users;									}
 	public void setUsers(Set<User> users) {								this.users = users;								}
+	
+	public Set<UserGroupPermission> getPermissions() {					return permissions;								}
+	public void setPermissions(Set<UserGroupPermission> permissions) {	this.permissions = permissions;					}
 
 }

@@ -1,0 +1,32 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    
+    <!-- USER SETTINGS -->
+    <changeSet id="insert-user-settings" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<and>
+				<tableExists tableName="${table.prefix}_USER_SETTINGS" />
+				<tableIsEmpty tableName="${table.prefix}_USER_SETTINGS" />
+			</and>			
+		</preConditions>
+		
+		<insert tableName="${table.prefix}_USER_SETTINGS">
+			<column name="${table.prefix}_LOCALE" 					value="es_UY" />
+			<column name="${table.prefix}_TIMEZONE" 				value="America/Montevideo" />
+			<column name="${table.prefix}_VERSION" 					value="0" />
+			<column name="${table.prefix}_CREATED_BY" 				value="${value.user}" />
+			<column name="${table.prefix}_LAST_MODIFIED_BY" 		value="${value.user}" />
+		</insert>
+        <insert tableName="${table.prefix}_USER_SETTINGS">
+            <column name="${table.prefix}_LOCALE"                   value="es_AR" />
+            <column name="${table.prefix}_TIMEZONE"                 value="America/Buenos_Aires" />
+            <column name="${table.prefix}_VERSION"                  value="0" />
+            <column name="${table.prefix}_CREATED_BY"               value="${value.user}" />
+            <column name="${table.prefix}_LAST_MODIFIED_BY"         value="${value.user}" />
+        </insert>
+								
+	</changeSet>
+	
+ </databaseChangeLog>

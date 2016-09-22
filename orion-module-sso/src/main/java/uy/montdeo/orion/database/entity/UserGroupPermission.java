@@ -27,7 +27,7 @@ import uy.montdeo.orion.database.converter.UpperCaseJpaAttributeConverter;
 	uniqueConstraints = {	@UniqueConstraint(name = "UNQ_PERMISSION_TOKEN",  columnNames = "token")	},
 	indexes = {	@Index(name = "IDX_PERMISSION_TOKEN", columnList = "token")	}
 )
-public class UserRolePermission extends AbstractEntity implements Serializable {
+public class UserGroupPermission extends AbstractEntity implements Serializable {
 
 	private static final long serialVersionUID = -6056416864478072025L;
 

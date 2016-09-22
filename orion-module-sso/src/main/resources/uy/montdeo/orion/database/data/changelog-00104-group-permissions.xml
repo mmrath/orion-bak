@@ -1,0 +1,34 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <!-- RELATIONSHIP BETWEEN GROUPS AND PERMISSIONS -->
+	<changeSet id="insert-groups-permissions" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<and>
+				<tableExists tableName="${table.prefix}_USER_GROUP_PERMISSIONS" />
+				<tableIsEmpty tableName="${table.prefix}_USER_GROUP_PERMISSIONS" />
+			</and>
+		</preConditions>
+
+		<!-- PERMISSIONS FOR THE ADMINISTRATOR ROLE -->
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_USER_GROUP_PERMISSIONS 
+                SELECT g.${table.prefix}_ID AS ${table.prefix}_USER_GROUP_ID, p.${table.prefix}_ID AS ${table.prefix}_PERMISSIONS_ID 
+                FROM ${table.prefix}_USER_GROUP_PERMISSION p, ${table.prefix}_USER_GROUP g 
+                WHERE g.${table.prefix}_NAME = 'ORION ADMIN USERS' 
+                ORDER BY p.${table.prefix}_ID ASC;
+		</sql>
+
+		<!-- PERMISSIONS FOR THE GUEST ROLE -->
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_USER_GROUP_PERMISSIONS 
+                SELECT g.${table.prefix}_ID AS ${table.prefix}_USER_GROUP_ID, p.${table.prefix}_ID AS ${table.prefix}_PERMISSIONS_ID 
+                FROM ${table.prefix}_USER_GROUP_PERMISSION p, ${table.prefix}_USER_GROUP g 
+                WHERE g.${table.prefix}_NAME = 'ORION GUEST USERS' AND p.${table.prefix}_TOKEN LIKE 'VIEW_%' 
+                ORDER BY p.${table.prefix}_ID ASC;
+		</sql>
+	</changeSet>
+	
+ </databaseChangeLog>

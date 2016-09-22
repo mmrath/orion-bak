@@ -7,23 +7,13 @@
     <changeSet id="insert-users" author="fabian.lobo">
 		<preConditions onFail="MARK_RAN">
 			<and>
-				<tableExists tableName="${table.prefix}_USER_SETTINGS" />
-				<tableIsEmpty tableName="${table.prefix}_USER_SETTINGS" />
 				<tableExists tableName="${table.prefix}_USER" />
 				<tableIsEmpty tableName="${table.prefix}_USER" />
 			</and>			
 		</preConditions>
 		
-		<insert tableName="${table.prefix}_USER_SETTINGS">
-			<column name="${table.prefix}_LOCALE" 					value="es_UY" />
-			<column name="${table.prefix}_TIMEZONE" 				value="America/Montevideo" />
-			<column name="${table.prefix}_VERSION" 					value="0" />
-			<column name="${table.prefix}_CREATED_BY" 				value="${value.user}" />
-			<column name="${table.prefix}_LAST_MODIFIED_BY" 		value="${value.user}" />
-		</insert>
-		
 		<insert tableName="${table.prefix}_USER">
-			<column name="${table.prefix}_ROLE_ID"					valueComputed="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_ROLE WHERE ${table.prefix}_NAME = 'ADMINISTRATOR')" />
+			<column name="${table.prefix}_GROUP_ID"					valueComputed="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'ORION ADMIN USERS')" />
 			<column name="${table.prefix}_SETTINGS_ID"				valueComputed="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'es_UY')" />
 			<column name="${table.prefix}_USERNAME"	 				value="admin@orion.uy" />
 			<column name="${table.prefix}_CREDENTIALS"				value="c29e2a712c9700e365577a1131f5689f70261dff794ffd31e3581dd8f4e9af5b5d4543144bebd353e53b3c1c23" />
@@ -36,6 +26,20 @@
 			<column name="${table.prefix}_CREATED_BY" 				value="${value.user}" />
 			<column name="${table.prefix}_LAST_MODIFIED_BY" 		value="${value.user}" />
 		</insert>
+        <insert tableName="${table.prefix}_USER">
+          <column name="${table.prefix}_GROUP_ID"                   valueComputed="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'ORION GUEST USERS')" />
+          <column name="${table.prefix}_SETTINGS_ID"                valueComputed="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'es_AR')" />
+          <column name="${table.prefix}_USERNAME"                   value="guest@orion.uy" />
+          <column name="${table.prefix}_CREDENTIALS"                value="c29e2a712c9700e365577a1131f5689f70261dff794ffd31e3581dd8f4e9af5b5d4543144bebd353e53b3c1c23" />
+          <column name="${table.prefix}_SALT"                       value="3812441e93880044" />
+          <column name="${table.prefix}_LOCKED"                     valueBoolean="false" />
+          <column name="${table.prefix}_DELETED"                    valueBoolean="false" />
+          <column name="${table.prefix}_ATTEMPTS"                   value="0" />
+          <column name="${table.prefix}_COMMENTS"                   value="GUEST USER FOR THE PLATFORM" />
+          <column name="${table.prefix}_VERSION"                    value="0" />
+          <column name="${table.prefix}_CREATED_BY"                 value="${value.user}" />
+          <column name="${table.prefix}_LAST_MODIFIED_BY"           value="${value.user}" />
+        </insert>
 								
 	</changeSet>
 	
