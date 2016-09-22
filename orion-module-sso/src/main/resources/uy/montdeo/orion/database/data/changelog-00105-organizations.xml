@@ -1,0 +1,27 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    
+    <!-- ORGANIZATIONS -->
+    <changeSet id="insert-organizations" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<and>
+				<tableExists tableName="${table.prefix}_ORGANIZATION" />
+				<tableIsEmpty tableName="${table.prefix}_ORGANIZATION" />
+			</and>			
+		</preConditions>
+		
+		<insert tableName="${table.prefix}_ORGANIZATION">
+			<column name="${table.prefix}_NAME"	    				value="ORION" />
+			<column name="${table.prefix}_ACTIVE" 					valueBoolean="true" />
+			<column name="${table.prefix}_DELETED" 					valueBoolean="false" />
+			<column name="${table.prefix}_COMMENTS" 				value="ORGANIZATION OWNING THE PLATFORM" />
+			<column name="${table.prefix}_VERSION" 					value="0" />
+			<column name="${table.prefix}_CREATED_BY" 				value="${value.user}" />
+			<column name="${table.prefix}_LAST_MODIFIED_BY" 		value="${value.user}" />
+		</insert>
+								
+	</changeSet>
+	
+ </databaseChangeLog>

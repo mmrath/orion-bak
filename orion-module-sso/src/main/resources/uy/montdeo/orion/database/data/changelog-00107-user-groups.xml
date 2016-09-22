@@ -1,0 +1,28 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <!-- RELATIONSHIP BETWEEN USERS AND GROUPS -->
+	<changeSet id="insert-user-groups" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<and>
+				<tableExists tableName="${table.prefix}_USER_GROUP_USERS" />
+				<tableIsEmpty tableName="${table.prefix}_USER_GROUP_USERS" />
+			</and>
+		</preConditions>
+
+		<!-- USERS FOR THE ADMINISTRATOR GROUP -->
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_USER_GROUP_USERS 
+                SELECT g.${table.prefix}_ID AS ${table.prefix}_USER_GROUP_ID, u.${table.prefix}_ID AS ${table.prefix}_USERS_ID 
+                FROM ${table.prefix}_USER_GROUP g, ${table.prefix}_USER u 
+                WHERE g.${table.prefix}_NAME = 'ORION ADMIN USERS' AND u.${table.prefix}_ROLE_ID = (
+                  SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_ROLE WHERE ${table.prefix}_NAME = 'ADMINISTRATOR'
+                )
+                ORDER BY u.${table.prefix}_ID ASC;
+		</sql>
+
+	</changeSet>
+	
+ </databaseChangeLog>
