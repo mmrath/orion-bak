@@ -11,13 +11,13 @@ import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
 
-import uy.montdeo.orion.config.CoreConfiguration;
+import uy.montdeo.orion.config.OrionConfiguration;
 
 @SpringBootApplication
 public class OrionApplication {
 
 	public static void main(String[] args) {
-		SpringApplication platform = new SpringApplication(OrionApplication.class, CoreConfiguration.class);
+		SpringApplication platform = new SpringApplication(OrionApplication.class, OrionConfiguration.class);
 		platform.setBannerMode(Mode.LOG);
 		platform.run(args);
     }

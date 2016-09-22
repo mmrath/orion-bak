@@ -16,6 +16,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -24,7 +25,13 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import liquibase.integration.spring.SpringLiquibase;
@@ -48,9 +55,9 @@ import uy.montdeo.orion.database.audit.JpaDatabaseAuditor;
 )
 @EnableSpringDataWebSupport
 @EnableTransactionManagement
-public class CoreConfiguration {
+public class OrionConfiguration {
 	
-	private static Logger log = LoggerFactory.getLogger(CoreConfiguration.class.getName());
+	private static Logger log = LoggerFactory.getLogger(OrionConfiguration.class.getName());
 	
 	@Autowired		
 	private JpaProperties jpaProperties;
@@ -104,6 +111,45 @@ public class CoreConfiguration {
 	@Bean
 	public LocaleResolver localeResolver() {
 		return new SessionLocaleResolver();
+	}
+	
+	@Bean
+	public static HandlerInterceptor localeInterceptor() {
+		LocaleChangeInterceptor locale = new LocaleChangeInterceptor();
+			locale.setParamName("lang");
+			
+		return locale;
+	}
+	
+	@Configuration
+	public static class WebConfiguration extends WebMvcConfigurerAdapter {
+
+		/*
+		 * (non-Javadoc)
+		 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter#configureDefaultServletHandling(org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer)
+		 */
+		@Override
+		public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+			configurer.enable();
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter#addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry)
+		 */
+		@Override
+		public void addViewControllers(ViewControllerRegistry registry) {
+			registry.addViewController("/").setViewName("home");
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter#addInterceptors(org.springframework.web.servlet.config.annotation.InterceptorRegistry)
+		 */
+		@Override
+		public void addInterceptors(InterceptorRegistry registry) {
+			registry.addInterceptor(localeInterceptor());
+		}		
 	}
 
 }
