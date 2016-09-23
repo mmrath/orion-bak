@@ -1,9 +1,9 @@
 package uy.montdeo.orion;
 
-import org.springframework.boot.Banner.Mode;
 import org.apache.catalina.Context;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
+import org.springframework.boot.Banner.Mode;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
@@ -20,26 +20,25 @@ public class OrionApplication {
 		SpringApplication platform = new SpringApplication(OrionApplication.class, OrionConfiguration.class);
 		platform.setBannerMode(Mode.LOG);
 		platform.run(args);
-    }
+	}
 	
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
 		return container -> {
-			((TomcatEmbeddedServletContainerFactory) container)
-				.getTomcatContextCustomizers()
+			((TomcatEmbeddedServletContainerFactory) container).getTomcatContextCustomizers()
 					.add(new TomcatContextCustomizer() {
-				
+
 						@Override
 						public void customize(Context context) {
 							SecurityConstraint securityConstraint = new SecurityConstraint();
-					        securityConstraint.setUserConstraint("CONFIDENTIAL");
-					        SecurityCollection collection = new SecurityCollection();
-					        collection.addPattern("/*");
-					        securityConstraint.addCollection(collection);
-					        context.addConstraint(securityConstraint);
-							
+							securityConstraint.setUserConstraint("CONFIDENTIAL");
+							SecurityCollection collection = new SecurityCollection();
+							collection.addPattern("/*");
+							securityConstraint.addCollection(collection);
+							context.addConstraint(securityConstraint);
+
 						}
 					});
 		};
-	}
+	}	
 }
