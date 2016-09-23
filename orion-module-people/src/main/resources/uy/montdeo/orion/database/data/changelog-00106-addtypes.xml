@@ -1,0 +1,35 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+        
+    <!-- ADDRESS TYPES -->
+    <changeSet id="insert-address-types" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<and>
+				<tableExists tableName="${table.prefix}_ADDRESS_TYPE" />
+				<tableIsEmpty tableName="${table.prefix}_ADDRESS_TYPE" />
+			</and>
+		</preConditions>
+
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_ADDRESS_TYPE(
+                ${table.prefix}_KEY,
+                ${table.prefix}_TRANSLATABLE,
+				${table.prefix}_CODE,  
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				('entity.addtype.BILLING', true, 'BILLING', 0, '${value.user}', '${value.user}'),
+				('entity.addtype.DELIVER', true, 'DELIVER', 0, '${value.user}', '${value.user}'),
+				('entity.addtype.HOME', true, 'HOME', 0, '${value.user}', '${value.user}'),
+                ('entity.addtype.MAIL', true, 'MAIL', 0, '${value.user}', '${value.user}'),
+                ('entity.addtype.OTHER', true, 'OTHER', 0, '${value.user}', '${value.user}'),
+                ('entity.addtype.SHIPPING', true, 'SHIPPING', 0, '${value.user}', '${value.user}'),
+                ('entity.addtype.WORK', true, 'WORK', 0, '${value.user}', '${value.user}');
+		</sql>
+			
+	</changeSet>
+	
+ </databaseChangeLog>

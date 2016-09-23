@@ -1,4 +1,4 @@
-package uy.montdeo.orion.database.entity.address;
+package uy.montdeo.orion.database.entity;
 
 import java.io.Serializable;
 

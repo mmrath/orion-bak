@@ -1,4 +1,4 @@
-package uy.montdeo.orion.database.entity.document;
+package uy.montdeo.orion.database.entity;
 
 import static javax.persistence.FetchType.EAGER;
 
@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import uy.montdeo.orion.database.AbstractEntity;
-import uy.montdeo.orion.database.entity.address.Country;
 
 /**
  * Entity that represents a document format for a given document type and country.

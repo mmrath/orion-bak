@@ -1,9 +1,9 @@
-package uy.montdeo.orion.database.repository.document;
+package uy.montdeo.orion.database.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import uy.montdeo.orion.database.entity.document.DocumentType;
+import uy.montdeo.orion.database.entity.DocumentType;
 
 /**
  * Interface extending the JPA's {@link CrudRepository} interface for accessing the {@link DocumentType} entity.

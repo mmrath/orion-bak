@@ -1,4 +1,4 @@
-package uy.montdeo.orion.database.entity.document;
+package uy.montdeo.orion.database.entity;
 
 import static javax.persistence.FetchType.EAGER;
 
@@ -16,7 +16,6 @@ import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
 import uy.montdeo.orion.database.AbstractEntity;
-import uy.montdeo.orion.database.entity.address.Country;
 
 /**
  * Entity that represents a document.
@@ -47,6 +46,11 @@ public class Document extends AbstractEntity implements Serializable {
 	private DocumentType type;
 	
 	@Audited
+	@JoinColumn(nullable = false, 	foreignKey = @ForeignKey(name = "FK_DOCUMENT_PERSON"))
+	@ManyToOne(optional = false, fetch = EAGER)
+	private Person person;
+	
+	@Audited
 	@Column(length = 30, nullable = false)
 	private String value;
 
@@ -56,6 +60,9 @@ public class Document extends AbstractEntity implements Serializable {
 
 	public DocumentType getType() {								return type;							}
 	public void setType(DocumentType type) {					this.type = type;						}
+	
+	public Person getPerson() {									return person;							}
+	public void setPerson(Person person) {						this.person = person;					}
 
 	public String getValue() {									return value;							}
 	public void setValue(String value) {						this.value = value;						}

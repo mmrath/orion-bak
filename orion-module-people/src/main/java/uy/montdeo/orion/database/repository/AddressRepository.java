@@ -1,10 +1,10 @@
-package uy.montdeo.orion.database.repository.address;
+package uy.montdeo.orion.database.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.history.RevisionRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import uy.montdeo.orion.database.entity.address.Address;
+import uy.montdeo.orion.database.entity.Address;
 
 /**
  * Interface extending the JPA's {@link PagingAndSortingRepository} interface for accessing the {@link Address} entity.
