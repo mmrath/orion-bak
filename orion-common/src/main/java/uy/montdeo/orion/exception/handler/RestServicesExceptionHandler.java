@@ -6,16 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.http.HttpHeaders;
+import org.springframework.data.rest.webmvc.RepositoryRestExceptionHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import uy.montdeo.orion.exception.BusinessException;
 import uy.montdeo.orion.model.Message;
@@ -28,8 +25,8 @@ import uy.montdeo.orion.model.MessageSeverity;
  * @author fabian.lobo
  * @since 1.0
  */
-@ControllerAdvice(annotations = RestController.class)
-public class RestServicesExceptionHandler extends ResponseEntityExceptionHandler {
+@ControllerAdvice(basePackageClasses = RepositoryRestExceptionHandler.class)
+public class RestServicesExceptionHandler {
 
 	private static Logger log = LoggerFactory.getLogger(RestServicesExceptionHandler.class.getName());
 	
@@ -62,20 +59,17 @@ public class RestServicesExceptionHandler extends ResponseEntityExceptionHandler
 		return new Message(MessageCode.ERROR, MessageSeverity.ERROR, messageText);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler#handleExceptionInternal(java.lang.Exception, java.lang.Object, org.springframework.http.HttpHeaders, org.springframework.http.HttpStatus, org.springframework.web.context.request.WebRequest)
+	/**
+	 * Method to send a proper message when a business exception is raised.
+	 * 
+	 * @param exception - The raised exception
+	 * @return a message to be sent to the user in JSON format
 	 */
-	@Override
-	protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
-		ResponseEntity<Object> response = super.handleExceptionInternal(ex, body, headers, status, request);
-		if(!response.hasBody() && ex instanceof BusinessException) {
-			BusinessException exception = (BusinessException) ex;
-			
-			return new ResponseEntity<Object>(
-				new Message(exception.getMessageCode(), MessageSeverity.ERROR, exception.getMessage()), exception.getHttpStatus()
-			);
-		}
-		return response;
+	@ExceptionHandler(BusinessException.class)
+	public ResponseEntity<Message>  businessException(BusinessException exception) {
+		String messageText = exception.getMessage(); 
+		log.error(messageText, exception);
+		
+		return new ResponseEntity<Message>(new Message(exception.getMessageCode(), MessageSeverity.ERROR, messageText), exception.getHttpStatus());
 	}
 }

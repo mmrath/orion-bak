@@ -67,7 +67,7 @@ public class HibernateEventListener implements PostLoadEventListener, PreInsertE
         registry.appendListeners(EventType.PRE_INSERT, this);
         registry.appendListeners(EventType.PRE_UPDATE, this);
                 		
-		log.info("Kudos - HibernateEventListener has been successfully initialized.");
+		log.info("Orion - HibernateEventListener has been successfully initialized.");
 	}
 
 	/*
