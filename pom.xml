@@ -101,6 +101,8 @@
     <orion.port.mysql>3306</orion.port.mysql>
     <orion.port.postgresql>5432</orion.port.postgresql>
     
+    <orion.profiles.active>default, hsqldb</orion.profiles.active>
+    
     <orion.truststore.path>${user.home}/orion.keystore</orion.truststore.path>
     <orion.truststore.password>Or10n2016</orion.truststore.password>
     <orion.truststore.type>JKS</orion.truststore.type>
@@ -515,11 +517,6 @@
         <jdk>${java.version}</jdk>
       </activation>
 
-      <!-- PROPERTIES -->
-      <properties>
-        <orion.profiles.active>default, hsqldb</orion.profiles.active>
-      </properties>
-      
       <!-- DEPENDENCIES -->
       <dependencies>
 
@@ -527,6 +524,12 @@
         <dependency>
           <groupId>org.hsqldb</groupId>
           <artifactId>hsqldb</artifactId>
+        </dependency>
+        
+        <!-- SPRING DATA REST FRAMEWORK -->
+        <dependency>
+          <groupId>org.springframework.data</groupId>
+          <artifactId>spring-data-rest-hal-browser</artifactId>
         </dependency>
 
       </dependencies>
