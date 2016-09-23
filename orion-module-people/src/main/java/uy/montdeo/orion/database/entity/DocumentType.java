@@ -33,13 +33,4 @@ public class DocumentType extends AbstractTranslatableEntity implements Serializ
 	public String getCode() {								return code;							}
 	public void setCode(String code) {						this.code = code;						}
 
-	/*
-	 * (non-Javadoc)
-	 * @see uy.montdeo.orion.core.AbstractTranslatableEntity#getKey()
-	 */
-	@Override
-	public String getKey() {
-		return "doctype.".concat(getCode());
-	}
-
 }

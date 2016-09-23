@@ -57,17 +57,4 @@ public class City extends AbstractTranslatableEntity implements Serializable {
 	public Double getLongitude() {								return longitude;						}
 	public void setLongitude(Double longitude) {				this.longitude = longitude;				}
 
-	/*
-	 * (non-Javadoc)
-	 * @see uy.montdeo.kudos.core.AbstractTranslatableEntity#getKey()
-	 */
-	@Override
-	public String getKey() {
-		return "city."
-				.concat(getState().getCountry().getAlpha2Code())
-				.concat("_")
-				.concat(getState().getCode())
-				.concat("_")
-				.concat(getCode());
-	}
 }

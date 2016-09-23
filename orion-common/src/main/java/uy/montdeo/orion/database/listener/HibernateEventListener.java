@@ -103,7 +103,7 @@ public class HibernateEventListener implements PostLoadEventListener, PreInsertE
 				messageSource.getMessage(source.getKey(), null, source.getKey(), getLocale()).toUpperCase(getLocale()) : 
 				source.getKey();
 			
-			source.setTranslation(translation);
+			source.setDescription(translation);
 		}
 
 	}

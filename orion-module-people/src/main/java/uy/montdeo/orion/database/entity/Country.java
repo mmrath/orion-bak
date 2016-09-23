@@ -59,14 +59,4 @@ public class Country extends AbstractTranslatableEntity implements Serializable 
 	public String getPhoneCode() {										return phoneCode;								}
 	public void setPhoneCode(String phoneCode) {						this.phoneCode = phoneCode;						}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see uy.montdeo.kudos.core.AbstractTranslatableEntity#getKey()
-	 */
-	@Override
-	public String getKey() {
-		return "country.".concat(getAlpha2Code());
-	}
-	
-	
 }

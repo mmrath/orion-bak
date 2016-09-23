@@ -1,11 +1,13 @@
 package uy.montdeo.orion.config;
 
 import java.util.Properties;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -35,6 +39,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import liquibase.integration.spring.SpringLiquibase;
+import uy.montdeo.orion.database.AbstractEntity;
 import uy.montdeo.orion.database.audit.JpaDatabaseAuditor;
 
 /**
@@ -112,17 +117,27 @@ public class OrionConfiguration {
 	public LocaleResolver localeResolver() {
 		return new SessionLocaleResolver();
 	}
-	
-	@Bean
-	public static HandlerInterceptor localeInterceptor() {
-		LocaleChangeInterceptor locale = new LocaleChangeInterceptor();
-			locale.setParamName("lang");
-			
-		return locale;
+		
+	/* ***		REST		*****/
+	@Configuration
+	public static class OrionRestConfiguration extends RepositoryRestConfigurerAdapter {
+		
+		private Reflections reflections = new Reflections("uy.montdeo.orion");
+
+		/*
+		 * (non-Javadoc)
+		 * @see org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter#configureRepositoryRestConfiguration(org.springframework.data.rest.core.config.RepositoryRestConfiguration)
+		 */
+		@Override
+		public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
+			Set<Class<? extends AbstractEntity>> children = reflections.getSubTypesOf(AbstractEntity.class);
+			config.exposeIdsFor(children.toArray(new Class<?>[children.size()]));
+		}
+		
 	}
 	
 	@Configuration
-	public static class WebConfiguration extends WebMvcConfigurerAdapter {
+	public static class OrionWebConfiguration extends WebMvcConfigurerAdapter {
 
 		/*
 		 * (non-Javadoc)
@@ -149,7 +164,15 @@ public class OrionConfiguration {
 		@Override
 		public void addInterceptors(InterceptorRegistry registry) {
 			registry.addInterceptor(localeInterceptor());
-		}		
+		}
+		
+		@Bean
+		public HandlerInterceptor localeInterceptor() {
+			LocaleChangeInterceptor locale = new LocaleChangeInterceptor();
+				locale.setParamName("lang");
+				
+			return locale;
+		}
 	}
 
 }

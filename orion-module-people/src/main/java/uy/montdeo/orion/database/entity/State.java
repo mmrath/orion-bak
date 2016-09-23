@@ -45,15 +45,4 @@ public class State extends AbstractTranslatableEntity implements Serializable {
 	public Country getCountry() {							return country;							}
 	public void setCountry(Country country) {				this.country = country;					}
 
-	/*
-	 * (non-Javadoc)
-	 * @see uy.montdeo.kudos.core.AbstractTranslatableEntity#getKey()
-	 */
-	@Override
-	public String getKey() {
-		return "state."
-			.concat(getCountry().getAlpha2Code())
-			.concat("_")
-			.concat(getCode());
-	}
 }
