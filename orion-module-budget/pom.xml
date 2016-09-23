@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- PROJECT INHERITANCE -->
+  <parent>
+    <groupId>uy.montdeo</groupId>
+    <artifactId>orion</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <!-- PROJECT INFORMATION -->
+  <artifactId>orion-module-budget</artifactId>
+  <name>Orion - Budget module</name>
+  <description>Maven project containing the elements for build the the platform module.</description>
+  <inceptionYear>2016</inceptionYear>
+  <url>https://www.orion.uy</url>
+  
+  <!-- PROPERTIES -->
+  <properties>
+    <orion.certificate.alias>orion-budget</orion.certificate.alias>
+    <orion.certificate.password>Or10n2016</orion.certificate.password>
+    <orion.database.name>budget</orion.database.name>
+    <orion.database.username>orion-budget</orion.database.username>
+    <orion.database.password>Or10n2016</orion.database.password>
+    <orion.management.port>15030</orion.management.port>
+    <orion.server.host>budget.orion.uy</orion.server.host>
+    <orion.server.port>8830</orion.server.port>
+  </properties>
+
+  <!-- DEPENDENCY MANAGEMENT -->
+  <dependencies>
+
+    <!-- PLATFORM LIBRARIES -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>orion-common</artifactId>
+    </dependency>
+    
+    <!-- SPRING BOOT STARTERS -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-rest</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-hateoas</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jta-bitronix</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-consul</artifactId>
+    </dependency>
+    
+    <!-- SPRING SECURITY FRAMEWORK -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+    </dependency>
+    
+    <!-- WEBJARS FRAMEWORKS -->
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>bootstrap</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>webjars-locator</artifactId>
+    </dependency>
+  </dependencies>
+</project>

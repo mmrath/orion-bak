@@ -10,21 +10,21 @@
   </parent>
 
   <!-- PROJECT INFORMATION -->
-  <artifactId>orion-module-sso</artifactId>
-  <name>Orion - SSO module</name>
+  <artifactId>orion-module-users</artifactId>
+  <name>Orion - Users module</name>
   <description>Maven project containing the elements for build the the platform module.</description>
   <inceptionYear>2016</inceptionYear>
   <url>https://www.orion.uy</url>
   
   <!-- PROPERTIES -->
   <properties>
-    <orion.certificate.alias>orion-sso</orion.certificate.alias>
+    <orion.certificate.alias>orion-users</orion.certificate.alias>
     <orion.certificate.password>Or10n2016</orion.certificate.password>
-    <orion.database.name>sso</orion.database.name>
-    <orion.database.username>orion-sso</orion.database.username>
+    <orion.database.name>users</orion.database.name>
+    <orion.database.username>orion-users</orion.database.username>
     <orion.database.password>Or10n2016</orion.database.password>
     <orion.management.port>15030</orion.management.port>
-    <orion.server.host>sso.orion.uy</orion.server.host>
+    <orion.server.host>users.orion.uy</orion.server.host>
     <orion.server.port>8830</orion.server.port>
   </properties>
 

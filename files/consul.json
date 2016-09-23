@@ -14,62 +14,108 @@
       "port": 8000
     },
     {
-      "id": "orion-catalog-8800",
+      "id": "orion-budget-8800",
+      "name": "orion-budget",
+      "tags": [		"slave"		],
+      "address": "budget.kudos.uy",
+      "port": 8800,
+	  "check": {
+		"id": "service:orion-budget-8800",
+		"name": "Orion Budget heartbeat endpoint",
+		"http": "https://budget.orion.uy:9800/manage/health",
+		"interval": "10s",
+		"service_id": "orion-budget-8800",
+		"timeout": "10s"
+	  }
+    },
+    {
+      "id": "orion-catalog-8810",
       "name": "orion-catalog",
       "tags": [		"slave"		],
       "address": "catalog.kudos.uy",
-      "port": 8800,
+      "port": 8810,
 	  "check": {
-		"id": "service:orion-catalog-8800",
+		"id": "service:orion-catalog-8810",
 		"name": "Orion Catalog heartbeat endpoint",
-		"http": "https://catalog.orion.uy:15000/manage/health",
+		"http": "https://catalog.orion.uy:9810/manage/health",
 		"interval": "10s",
-		"service_id": "orion-catalog-8800",
+		"service_id": "orion-catalog-8810",
 		"timeout": "10s"
 	  }
     },
     {
-      "id": "orion-finance-8810",
+      "id": "orion-finance-8820",
       "name": "orion-finance",
       "tags": [		"slave"		],
       "address": "finance.kudos.uy",
-      "port": 8810,
+      "port": 8820,
 	  "check": {
-		"id": "service:orion-finance-8810",
+		"id": "service:orion-finance-8820",
 		"name": "Orion Finance heartbeat endpoint",
-		"http": "https://finance.orion.uy:15010/manage/health",
+		"http": "https://finance.orion.uy:9820/manage/health",
 		"interval": "10s",
-		"service_id": "orion-finance-8810",
+		"service_id": "orion-finance-8820",
 		"timeout": "10s"
 	  }
     },
     {
-      "id": "orion-people-8820",
+      "id": "orion-people-8830",
       "name": "orion-people",
       "tags": [		"slave"		],
       "address": "people.kudos.uy",
-      "port": 8820,
+      "port": 8830,
 	  "check": {
-		"id": "service:orion-people-8820",
+		"id": "service:orion-people-8830",
 		"name": "Orion People heartbeat endpoint",
-		"http": "https://people.orion.uy:15020/manage/health",
+		"http": "https://people.orion.uy:9830/manage/health",
 		"interval": "10s",
-		"service_id": "orion-people-8820",
+		"service_id": "orion-people-8830",
 		"timeout": "10s"
 	  }
     },
     {
-      "id": "orion-sso-8830",
-      "name": "orion-sso",
+      "id": "orion-store-8840",
+      "name": "orion-store",
       "tags": [		"slave"		],
-      "address": "sso.kudos.uy",
-      "port": 8830,
+      "address": "store.kudos.uy",
+      "port": 8840,
 	  "check": {
-		"id": "service:orion-sso-8830",
-		"name": "Orion SSO heartbeat endpoint",
-		"http": "https://sso.orion.uy:15030/manage/health",
+		"id": "service:orion-store-8840",
+		"name": "Orion Store heartbeat endpoint",
+		"http": "https://store.orion.uy:9840/manage/health",
 		"interval": "10s",
-		"service_id": "orion-sso-8830",
+		"service_id": "orion-store-8840",
+		"timeout": "10s"
+	  }
+    }
+	,
+    {
+      "id": "orion-users-8850",
+      "name": "orion-users",
+      "tags": [		"slave"		],
+      "address": "users.kudos.uy",
+      "port": 8850,
+	  "check": {
+		"id": "service:orion-users-8850",
+		"name": "Orion Users heartbeat endpoint",
+		"http": "https://users.orion.uy:9850/manage/health",
+		"interval": "10s",
+		"service_id": "orion-users-8850",
+		"timeout": "10s"
+	  }
+    },
+    {
+      "id": "orion-warehouse-8860",
+      "name": "orion-warehouse",
+      "tags": [		"slave"		],
+      "address": "warehouse.kudos.uy",
+      "port": 8860,
+	  "check": {
+		"id": "service:orion-warehouse-8860",
+		"name": "Orion Warehouse heartbeat endpoint",
+		"http": "https://warehouse.orion.uy:9860/manage/health",
+		"interval": "10s",
+		"service_id": "orion-warehouse-8860",
 		"timeout": "10s"
 	  }
     }
