@@ -16,6 +16,6 @@ import uy.montdeo.orion.database.entity.Address;
  * @see RevisionRepository
  */
 @RepositoryRestResource(path = "addresses", collectionResourceRel = "addresses", itemResourceRel = "address")
-public interface AddressRepository extends RevisionRepository<Address, Long, Integer>, PagingAndSortingRepository<Address, Integer> {
+public interface AddressRepository extends RevisionRepository<Address, Integer, Integer>, PagingAndSortingRepository<Address, Integer> {
 
 }

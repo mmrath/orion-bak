@@ -28,6 +28,7 @@ import org.springframework.cloud.commons.util.InetUtilsProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -35,8 +36,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.LocaleResolver;
@@ -86,6 +90,11 @@ public class OrionConfiguration {
 	
 	private static Logger log = LoggerFactory.getLogger(OrionConfiguration.class.getName());
 	
+	private static String[] PACKAGES = {
+		"uy.montdeo.orion.database.entity", 
+		"org.springframework.data.jpa.convert.threeten"
+	};
+	
 	private static final int TIME_TO_LIVE_IN_SECONDS = 24 * 60 * 60;
 	private static final int MAX_IDLE_TIME_IN_SECONDS = 2 * 60 * 60;
 	private static final int INFINITE = 0;
@@ -93,10 +102,7 @@ public class OrionConfiguration {
 	private static final String LEADER_SESSION_NAME 		= "hazelcast_leader_session";
 	private static final String LEADER_VALID_FOR 			= "300s"; // 5 minutes
 	private static final String LEADER_IP_PROPERTY_NAME 	= "hazelcast.leader.ip";
-	
-	@Autowired
-	private ConsulClient consulClient;
-	
+		
 	/**
 	 * Method to verify that all dependencies and requirements have been set.
 	 * 
@@ -109,105 +115,193 @@ public class OrionConfiguration {
 	}
 	
 	/* ***		DATABASE		*****/
-	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(JpaProperties jpaProperties, DataSource dataSource, JpaVendorAdapter vendorAdapter) {
+	private static Properties jpaProperties(JpaProperties jpaProperties, DataSource dataSource) {
 		Properties properties = new Properties();
 		properties.putAll(jpaProperties.getProperties());
 		properties.putAll(jpaProperties.getHibernateProperties(dataSource));
-		
-		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-			factory.setJtaDataSource(dataSource);
-			factory.setBeanName("entityManagerFactory");
-			factory.setJpaVendorAdapter(vendorAdapter);
-			factory.setJpaProperties(properties);
-			factory.setPackagesToScan(
-				"uy.montdeo.orion.database.entity", 
-				"org.springframework.data.jpa.convert.threeten"
-			);			
-		
-		return factory;
-	}
-	
-	@Bean
-	public SpringLiquibase liquibase(DataSource dataSource, EntityManagerFactory entityManagerFactory) {
-		SpringLiquibase liquibase = new SpringLiquibase();
-			liquibase.setChangeLog("classpath:/liquibase-changelog.xml");
-			liquibase.setDataSource(dataSource);
-		
-		return liquibase;
+
+		return properties;
 	}
 	
 	@Bean
     public AuditorAware<String> databaseAuditor() {
         return new JpaDatabaseAuditor();
     }
+	
+	/* ***		DATABASE - PRODUCTION		*****/
+	@Configuration	@Profile("default")
+	public static class OrionDatabaseConfiguration {
 		
+		@Bean
+		public LocalContainerEntityManagerFactoryBean entityManagerFactory(JpaProperties jpaProperties, DataSource dataSource, JpaVendorAdapter vendorAdapter) {
+			LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+				factory.setBeanName("entityManagerFactory");
+				factory.setJpaProperties(jpaProperties(jpaProperties, dataSource));
+				factory.setJpaVendorAdapter(vendorAdapter);
+				factory.setJtaDataSource(dataSource);
+				factory.setPackagesToScan(PACKAGES);			
+			
+			return factory;
+		}
+			
+		@Bean
+		public SpringLiquibase liquibase(DataSource dataSource, EntityManagerFactory entityManagerFactory) {
+			SpringLiquibase liquibase = new SpringLiquibase();
+				liquibase.setChangeLog("classpath:/liquibase-changelog.xml");
+				liquibase.setDataSource(dataSource);
+			
+			return liquibase;
+		}
+		
+	}
+	
+	@Configuration	@Profile("testing")
+	public static class OrionTestingDatabaseConfiguration {
+		
+		@Bean
+		public LocalContainerEntityManagerFactoryBean entityManagerFactory(JpaProperties jpaProperties, DataSource dataSource) {
+			HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+				vendorAdapter.setGenerateDdl(true);
+
+			LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+				factory.setBeanName("entityManagerFactory");
+				factory.setDataSource(dataSource);
+				factory.setJpaProperties(jpaProperties(jpaProperties, dataSource));
+				factory.setJpaVendorAdapter(vendorAdapter);
+				factory.setPackagesToScan(PACKAGES);
+
+			return factory;
+		}
+		
+		@Bean
+		public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+			JpaTransactionManager manager = new JpaTransactionManager();
+				manager.setEntityManagerFactory(entityManagerFactory);
+				
+			return manager;
+		}
+		
+		@Bean
+		public SpringLiquibase liquibase(DataSource dataSource, EntityManagerFactory entityManagerFactory) {
+			SpringLiquibase liquibase = new SpringLiquibase();
+				liquibase.setChangeLog("classpath:/liquibase-changelog-test.xml");
+				liquibase.setDataSource(dataSource);
+			
+			return liquibase;
+		}
+	}
+			
 	/* ***		I18N		*****/
 	@Bean
 	public LocaleResolver localeResolver() {
 		return new SessionLocaleResolver();
 	}
 	
-	/* ***		HAZELCAST		*****/
-	@Bean
-	public Config hazelcastConfig() {
-		List<String> members = getClusterMembersIps();
+	/* ***		HAZELCAST  - PRODUCTION		*****/
+	
+	@Configuration	@Profile("default")
+	public static class OrionHazelcastConfiguration {
 		
-		MulticastConfig multicastConfig = new MulticastConfig().setEnabled(false);
-		TcpIpConfig tcpIpConfig = new TcpIpConfig().setEnabled(true).setMembers(members);
-				
-		return new Config()
-			.addMapConfig(mapConfig("tokens", TIME_TO_LIVE_IN_SECONDS, MAX_IDLE_TIME_IN_SECONDS))
-			.addMapConfig(mapConfig("countries", INFINITE, INFINITE))
-			.setNetworkConfig(
-				new NetworkConfig().setJoin(
-					new JoinConfig()
-						.setMulticastConfig(multicastConfig)
-						.setTcpIpConfig(tcpIpConfig)
+		@Autowired
+		private ConsulClient consulClient;
+		
+		@Bean
+		public Config hazelcastConfig() {
+			List<String> members = getClusterMembersIps();
+			
+			MulticastConfig multicastConfig = new MulticastConfig().setEnabled(false);
+			TcpIpConfig tcpIpConfig = new TcpIpConfig().setEnabled(true).setMembers(members);
+					
+			return new Config()
+				.addMapConfig(mapConfig("tokens", TIME_TO_LIVE_IN_SECONDS, MAX_IDLE_TIME_IN_SECONDS))
+				.addMapConfig(mapConfig("countries", INFINITE, INFINITE))
+				.setNetworkConfig(
+					new NetworkConfig().setJoin(
+						new JoinConfig()
+							.setMulticastConfig(multicastConfig)
+							.setTcpIpConfig(tcpIpConfig)
+					)
 				)
-			)
-			;
-	}
-	
-	private List<String> getClusterMembersIps() {
-		try {
-	      return Optional.of(fetchRunningClusterStartupLeader()).filter(list -> !list.isEmpty()).orElse(electNewClusterStartupLeader());
-	    } catch (Exception ex) {
-	    	log.error(ex.getMessage());
-	    	throw new RuntimeException("Cannot connect to cluster.", ex);
-	    }
-	}
-
-	private List<String> fetchRunningClusterStartupLeader() {
-		String encodedLeaderIp = consulClient.getKVValue(LEADER_IP_PROPERTY_NAME).getValue().getValue();
-		String leaderPublicIp = new String(Base64.getDecoder().decode(encodedLeaderIp));
-		if(hasText(leaderPublicIp)) {
-			return Arrays.asList(leaderPublicIp);
+				;
 		}
-		return emptyList();
-	}
-	
-	private List<String> electNewClusterStartupLeader() {
-		InetUtils utils = new InetUtils(new InetUtilsProperties());
-		String myPublicIp = utils.findFirstNonLoopbackHostInfo().getIpAddress();
 		
-		utils.close();
-		
-		PutParams leaderKeyParams = new PutParams();
-	    leaderKeyParams.setAcquireSession(createSessionLock());
-	    consulClient.setKVValue(LEADER_IP_PROPERTY_NAME, myPublicIp, leaderKeyParams);
-	    
-	    return Arrays.asList(myPublicIp);
-	}
-	
-	private String createSessionLock() {
-	    NewSession lockingSession = new NewSession();
-	    lockingSession.setName(LEADER_SESSION_NAME);
-	    lockingSession.setTtl(LEADER_VALID_FOR);
-	    return consulClient.sessionCreate(lockingSession, QueryParams.DEFAULT).getValue();
-	}
+		private List<String> getClusterMembersIps() {
+			try {
+		      return Optional.of(fetchRunningClusterStartupLeader()).filter(list -> !list.isEmpty()).orElse(electNewClusterStartupLeader());
+		    } catch (Exception ex) {
+		    	log.error("Cannot connect to cluster.", ex);
+		    	return electNewClusterStartupLeader();
+		    }		
+		}
 
-	private MapConfig mapConfig(String name, int ttls, int mis) {
+		private List<String> fetchRunningClusterStartupLeader() {
+			String encodedLeaderIp = consulClient.getKVValue(LEADER_IP_PROPERTY_NAME).getValue().getValue();
+			String leaderPublicIp = new String(Base64.getDecoder().decode(encodedLeaderIp));
+			if(hasText(leaderPublicIp)) {
+				return Arrays.asList(leaderPublicIp);
+			}
+			return emptyList();
+		}
+		
+		private List<String> electNewClusterStartupLeader() {
+			InetUtils utils = new InetUtils(new InetUtilsProperties());
+			String myPublicIp = utils.findFirstNonLoopbackHostInfo().getIpAddress();
+			utils.close();
+			
+			try {
+				PutParams leaderKeyParams = new PutParams();
+				leaderKeyParams.setAcquireSession(createSessionLock());
+				consulClient.setKVValue(LEADER_IP_PROPERTY_NAME, myPublicIp, leaderKeyParams);
+			} catch (Exception e) {
+				log.error("Cannot connect to Consul service.", e);
+			}
+		    
+		    return Arrays.asList(myPublicIp);
+		}
+		
+		private String createSessionLock() {
+		    NewSession lockingSession = new NewSession();
+		    lockingSession.setName(LEADER_SESSION_NAME);
+		    lockingSession.setTtl(LEADER_VALID_FOR);
+		    return consulClient.sessionCreate(lockingSession, QueryParams.DEFAULT).getValue();
+		}
+		
+	}
+	
+	@Configuration	@Profile("teting")
+	public static class OrionTestingHazelcastConfiguration {
+		
+		@Bean
+		public Config hazelcastConfig() {
+			List<String> members = getLocalhostIp();
+			
+			MulticastConfig multicastConfig = new MulticastConfig().setEnabled(false);
+			TcpIpConfig tcpIpConfig = new TcpIpConfig().setEnabled(true).setMembers(members);
+					
+			return new Config()
+				.addMapConfig(mapConfig("tokens", TIME_TO_LIVE_IN_SECONDS, MAX_IDLE_TIME_IN_SECONDS))
+				.addMapConfig(mapConfig("countries", INFINITE, INFINITE))
+				.setNetworkConfig(
+					new NetworkConfig().setJoin(
+						new JoinConfig()
+							.setMulticastConfig(multicastConfig)
+							.setTcpIpConfig(tcpIpConfig)
+					)
+				)
+				;
+		}
+
+		private List<String> getLocalhostIp() {
+			InetUtils utils = new InetUtils(new InetUtilsProperties());
+			String myPublicIp = utils.findFirstNonLoopbackHostInfo().getIpAddress();
+			utils.close();
+			
+			return Arrays.asList(myPublicIp);
+		}
+		
+	}
+	
+	private static MapConfig mapConfig(String name, int ttls, int mis) {
 	    return new MapConfig()
 	    	.setEvictionPolicy(EvictionPolicy.LRU)
 	    	.setMaxIdleSeconds(mis)

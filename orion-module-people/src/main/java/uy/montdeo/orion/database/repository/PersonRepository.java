@@ -16,6 +16,6 @@ import uy.montdeo.orion.database.entity.Person;
  * @see RevisionRepository
  */
 @RepositoryRestResource(path = "persons", collectionResourceRel = "persons", itemResourceRel = "person")
-public interface PersonRepository extends RevisionRepository<Person, Long, Integer>, PagingAndSortingRepository<Person, Integer> {
+public interface PersonRepository extends RevisionRepository<Person, Integer, Integer>, PagingAndSortingRepository<Person, Integer> {
 
 }

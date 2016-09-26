@@ -1,0 +1,61 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <property name="id.city.ar"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'AR')" /> 
+    <property name="id.city.mo"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'MO')" /> 
+    <property name="id.city.ma"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'MA')" />
+    <property name="id.city.pa"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'PA')" />
+    <property name="id.city.pe"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_CITY WHERE ${table.prefix}_CODE = 'PE')" />
+    
+    <!-- ADDRESSES -->
+    <changeSet id="insert-dummy-addresses" author="fabian.lobo">
+    	<preConditions onFail="MARK_RAN">
+			<tableExists tableName="${table.prefix}_ADDRESS" />
+		</preConditions>
+		
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_ADDRESS(
+				${table.prefix}_STREET, 
+				${table.prefix}_NUMBER, 
+				${table.prefix}_ZIP_CODE,
+				${table.prefix}_BLOCK,  
+				${table.prefix}_APARTMENT,
+				${table.prefix}_LATITUDE, 
+				${table.prefix}_LONGITUDE, 
+				${table.prefix}_CITY_ID,
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				('DUMMY STREET 001', '001', '00001', '001', '001', -30.405991, -56.470944, ${id.city.ar}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 002', '002', '00002', '002', '002', -30.405992, -56.470945, ${id.city.ar}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 003', '003', '00003', '003', '003', -30.405993, -56.470946, ${id.city.mo}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 004', '004', '00004', '004', '004', -30.405994, -56.470947, ${id.city.ar}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 005', '005', '00005', '005', '005', -30.405995, -56.470948, ${id.city.mo}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 006', '006', '00006', '006', '006', -30.405996, -56.470949, ${id.city.ar}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 007', '007', '00007', '007', '007', -30.405997, -56.470950, ${id.city.mo}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 008', '008', '00008', '008', '008', -30.405998, -56.470951, ${id.city.ma}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 009', '009', '00009', '009', '009', -30.405999, -56.470952, ${id.city.ar}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 010', '010', '00010', '010', '010', -30.405901, -56.470953, ${id.city.pe}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 011', '011', '00011', '011', '011', -30.405902, -56.470954, ${id.city.mo}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 012', '012', '00012', '012', '012', -30.405903, -56.470955, ${id.city.ar}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 013', '013', '00013', '013', '013', -30.405904, -56.470956, ${id.city.pa}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 014', '014', '00014', '014', '014', -30.405905, -56.470957, ${id.city.ar}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 015', '015', '00015', '015', '015', -30.405906, -56.470958, ${id.city.ma}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 016', '016', '00016', '016', '016', -30.405907, -56.470959, ${id.city.ma}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 017', '017', '00017', '017', '017', -30.405908, -56.470960, ${id.city.ar}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 018', '018', '00018', '018', '018', -30.405909, -56.470961, ${id.city.pa}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 019', '019', '00019', '019', '019', -30.405910, -56.470962, ${id.city.mo}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 020', '020', '00020', '020', '020', -30.405911, -56.470963, ${id.city.pa}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 021', '021', '00021', '021', '021', -30.405912, -56.470964, ${id.city.mo}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 022', '022', '00022', '022', '022', -30.405913, -56.470965, ${id.city.ma}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 023', '023', '00023', '023', '023', -30.405914, -56.470966, ${id.city.pa}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 024', '024', '00024', '024', '024', -30.405915, -56.470967, ${id.city.mo}, 0, '${value.user}', '${value.user}'),
+				('DUMMY STREET 025', '025', '00025', '025', '025', -30.405916, -56.470968, ${id.city.mo}, 0, '${value.user}', '${value.user}');
+		</sql>
+			
+	</changeSet>
+	
+ </databaseChangeLog>

@@ -18,7 +18,7 @@ import uy.montdeo.orion.database.entity.Document;
  * @see RevisionRepository
  */
 @RepositoryRestResource(path = "documents", collectionResourceRel = "documents", itemResourceRel = "document")
-public interface DocumentRepository extends RevisionRepository<Document, Long, Integer>, CrudRepository<Document, Integer> {
+public interface DocumentRepository extends RevisionRepository<Document, Integer, Integer>, CrudRepository<Document, Integer> {
 	
 	@RestResource(path = "withParams", rel = "withParams")
 	Document getByCountryIdAndTypeIdAndValue(@Param("country") Integer country, @Param("type") Integer type, @Param("value") String value);

@@ -1,0 +1,111 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    
+    <property name="id.person.01"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 001')" /> 
+    <property name="id.person.02"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 002')" />
+    <property name="id.person.03"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 003')" />
+    <property name="id.person.04"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 004')" />
+    <property name="id.person.05"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 005')" />
+    <property name="id.person.06"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 006')" />
+    <property name="id.person.07"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 007')" />
+    <property name="id.person.08"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 008')" />
+    <property name="id.person.09"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 009')" />
+    <property name="id.person.10"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 010')" />
+    <property name="id.person.11"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 011')" />
+    <property name="id.person.12"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 012')" />
+    <property name="id.person.13"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 013')" />
+    <property name="id.person.14"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 014')" />
+    <property name="id.person.15"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 015')" />
+    <property name="id.person.16"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 016')" />
+    <property name="id.person.17"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 017')" />
+    <property name="id.person.18"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 018')" />
+    <property name="id.person.19"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 019')" />
+    <property name="id.person.20"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 020')" />
+    <property name="id.person.21"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 021')" />
+    <property name="id.person.22"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 022')" />
+    <property name="id.person.23"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 023')" />
+    <property name="id.person.24"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 024')" />
+    <property name="id.person.25"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 025')" />
+    
+    <property name="id.address.01"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 001')" /> 
+    <property name="id.address.02"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 002')" />
+    <property name="id.address.03"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 003')" />
+    <property name="id.address.04"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 004')" />
+    <property name="id.address.05"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 005')" />
+    <property name="id.address.06"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 006')" />
+    <property name="id.address.07"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 007')" />
+    <property name="id.address.08"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 008')" />
+    <property name="id.address.09"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 009')" />
+    <property name="id.address.10"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 010')" />
+    <property name="id.address.11"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 011')" />
+    <property name="id.address.12"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 012')" />
+    <property name="id.address.13"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 013')" />
+    <property name="id.address.14"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 014')" />
+    <property name="id.address.15"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 015')" />
+    <property name="id.address.16"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 016')" />
+    <property name="id.address.17"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 017')" />
+    <property name="id.address.18"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 018')" />
+    <property name="id.address.19"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 019')" />
+    <property name="id.address.20"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 020')" />
+    <property name="id.address.21"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 021')" />
+    <property name="id.address.22"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 022')" />
+    <property name="id.address.23"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 023')" />
+    <property name="id.address.24"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 024')" />
+    <property name="id.address.25"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS WHERE ${table.prefix}_STREET = 'DUMMY STREET 025')" />
+    
+    <property name="id.addtype.bill"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS_TYPE WHERE ${table.prefix}_CODE = 'BILLING')" />
+    <property name="id.addtype.deli"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS_TYPE WHERE ${table.prefix}_CODE = 'DELIVER')" />
+    <property name="id.addtype.home"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS_TYPE WHERE ${table.prefix}_CODE = 'HOME')" />
+    <property name="id.addtype.mail"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS_TYPE WHERE ${table.prefix}_CODE = 'MAIL')" />
+    <property name="id.addtype.other"  value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS_TYPE WHERE ${table.prefix}_CODE = 'OTHER')" />
+    <property name="id.addtype.ship"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS_TYPE WHERE ${table.prefix}_CODE = 'SHIPPING')" />
+    <property name="id.addtype.work"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ADDRESS_TYPE WHERE ${table.prefix}_CODE = 'WORK')" />
+       
+    <!-- RELATIONSHIP BETWEEN PERSONS AND ADDRESSES -->
+    <changeSet id="insert-dummy-person-addresses" author="fabian.lobo">
+    	<preConditions onFail="MARK_RAN">
+			<tableExists tableName="${table.prefix}_PERSON_ADDRESS" />
+		</preConditions>
+		
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_PERSON_ADDRESS(
+				${table.prefix}_PERSON_ID, 
+				${table.prefix}_ADDRESS_ID, 
+				${table.prefix}_TYPE_ID,
+				${table.prefix}_PRIMARY,  
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				(${id.person.01}, ${id.address.01}, ${id.addtype.bill}, true, 0, '${value.user}', '${value.user}'),
+				(${id.person.02}, ${id.address.02}, ${id.addtype.deli}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.03}, ${id.address.03}, ${id.addtype.work}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.04}, ${id.address.04}, ${id.addtype.bill}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.05}, ${id.address.05}, ${id.addtype.mail}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.06}, ${id.address.06}, ${id.addtype.work}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.07}, ${id.address.07}, ${id.addtype.bill}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.08}, ${id.address.08}, ${id.addtype.home}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.09}, ${id.address.09}, ${id.addtype.deli}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.10}, ${id.address.10}, ${id.addtype.ship}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.11}, ${id.address.11}, ${id.addtype.mail}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.12}, ${id.address.12}, ${id.addtype.home}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.13}, ${id.address.13}, ${id.addtype.bill}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.14}, ${id.address.14}, ${id.addtype.other}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.15}, ${id.address.15}, ${id.addtype.deli}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.16}, ${id.address.15}, ${id.addtype.mail}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.17}, ${id.address.17}, ${id.addtype.bill}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.18}, ${id.address.18}, ${id.addtype.home}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.19}, ${id.address.19}, ${id.addtype.ship}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.20}, ${id.address.20}, ${id.addtype.bill}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.21}, ${id.address.21}, ${id.addtype.mail}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.22}, ${id.address.22}, ${id.addtype.ship}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.23}, ${id.address.23}, ${id.addtype.deli}, true, 0, '${value.user}', '${value.user}'),
+                (${id.person.24}, ${id.address.24}, ${id.addtype.bill}, true, 0, '${value.user}', '${value.user}'),
+				(${id.person.25}, ${id.address.25}, ${id.addtype.other}, true, 0, '${value.user}', '${value.user}');
+		</sql>
+			
+	</changeSet>
+	
+ </databaseChangeLog>

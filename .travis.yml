@@ -2,6 +2,6 @@ language: java
 jdk:
   - oraclejdk8
 sudo: true
-script: ./mvnw clean install
+script: ./mvnw clean install -Phsqldb,testing
 before_install:
   - chmod +x mvnw

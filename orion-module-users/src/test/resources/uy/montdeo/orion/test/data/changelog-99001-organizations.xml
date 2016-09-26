@@ -1,0 +1,50 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <!-- ORGANIZATIONS -->
+    <changeSet id="insert-dummy-organizations" author="fabian.lobo">
+    	<preConditions onFail="MARK_RAN">
+			<tableExists tableName="${table.prefix}_ORGANIZATION" />
+		</preConditions>
+		
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_ORGANIZATION(
+				${table.prefix}_NAME, 
+				${table.prefix}_ACTIVE, 
+				${table.prefix}_DELETED,
+				${table.prefix}_COMMENTS,  
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				('DUMMY ORGANIZATION 001', true, false, 'DUMMY ORGANIZATION 001', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 002', true, false, 'DUMMY ORGANIZATION 002', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 003', true, false, 'DUMMY ORGANIZATION 003', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 004', true, false, 'DUMMY ORGANIZATION 004', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 005', true, false, 'DUMMY ORGANIZATION 005', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 006', true, false, 'DUMMY ORGANIZATION 006', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 007', true, false, 'DUMMY ORGANIZATION 007', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 008', true, false, 'DUMMY ORGANIZATION 008', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 009', true, false, 'DUMMY ORGANIZATION 009', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 010', true, false, 'DUMMY ORGANIZATION 010', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 011', true, false, 'DUMMY ORGANIZATION 011', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 012', true, false, 'DUMMY ORGANIZATION 012', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 013', true, false, 'DUMMY ORGANIZATION 013', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 014', true, false, 'DUMMY ORGANIZATION 014', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 015', true, false, 'DUMMY ORGANIZATION 015', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 016', true, false, 'DUMMY ORGANIZATION 016', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 017', true, false, 'DUMMY ORGANIZATION 017', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 018', true, false, 'DUMMY ORGANIZATION 018', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 019', true, false, 'DUMMY ORGANIZATION 019', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 020', true, false, 'DUMMY ORGANIZATION 020', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 021', true, false, 'DUMMY ORGANIZATION 021', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 022', true, false, 'DUMMY ORGANIZATION 022', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 023', true, false, 'DUMMY ORGANIZATION 023', 0, '${value.user}', '${value.user}'),
+				('DUMMY ORGANIZATION 024', true, false, 'DUMMY ORGANIZATION 024', 0, '${value.user}', '${value.user}');
+		</sql>
+			
+	</changeSet>
+	
+ </databaseChangeLog>

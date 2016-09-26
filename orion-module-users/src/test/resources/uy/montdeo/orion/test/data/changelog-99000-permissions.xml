@@ -1,0 +1,50 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <!-- PERMISSIONS -->
+    <changeSet id="insert-dummy-permissions" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="${table.prefix}_USER_GROUP_PERMISSION" />
+		</preConditions>
+		
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_USER_GROUP_PERMISSION(
+				${table.prefix}_TOKEN, 
+				${table.prefix}_DESCRIPTION,
+				${table.prefix}_COMMENTS, 
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				('DUMMY_PERMISSION_001', 'DUMMY PERMISSION 001', 'DUMMY PERMISSION 001', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_002', 'DUMMY PERMISSION 002', 'DUMMY PERMISSION 002', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_003', 'DUMMY PERMISSION 003', 'DUMMY PERMISSION 003', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_004', 'DUMMY PERMISSION 004', 'DUMMY PERMISSION 004', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_005', 'DUMMY PERMISSION 005', 'DUMMY PERMISSION 005', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_006', 'DUMMY PERMISSION 006', 'DUMMY PERMISSION 006', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_007', 'DUMMY PERMISSION 007', 'DUMMY PERMISSION 007', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_008', 'DUMMY PERMISSION 008', 'DUMMY PERMISSION 008', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_009', 'DUMMY PERMISSION 009', 'DUMMY PERMISSION 009', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_010', 'DUMMY PERMISSION 010', 'DUMMY PERMISSION 010', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_011', 'DUMMY PERMISSION 011', 'DUMMY PERMISSION 011', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_012', 'DUMMY PERMISSION 012', 'DUMMY PERMISSION 012', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_013', 'DUMMY PERMISSION 013', 'DUMMY PERMISSION 013', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_014', 'DUMMY PERMISSION 014', 'DUMMY PERMISSION 014', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_015', 'DUMMY PERMISSION 015', 'DUMMY PERMISSION 015', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_016', 'DUMMY PERMISSION 016', 'DUMMY PERMISSION 016', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_017', 'DUMMY PERMISSION 017', 'DUMMY PERMISSION 017', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_018', 'DUMMY PERMISSION 018', 'DUMMY PERMISSION 018', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_019', 'DUMMY PERMISSION 019', 'DUMMY PERMISSION 019', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_020', 'DUMMY PERMISSION 020', 'DUMMY PERMISSION 020', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_021', 'DUMMY PERMISSION 021', 'DUMMY PERMISSION 021', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_022', 'DUMMY PERMISSION 022', 'DUMMY PERMISSION 022', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_023', 'DUMMY PERMISSION 023', 'DUMMY PERMISSION 023', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_024', 'DUMMY PERMISSION 024', 'DUMMY PERMISSION 024', 0, '${value.user}', '${value.user}'),
+				('DUMMY_PERMISSION_025', 'DUMMY PERMISSION 025', 'DUMMY PERMISSION 025', 0, '${value.user}', '${value.user}');
+		</sql>
+
+	</changeSet>
+	
+ </databaseChangeLog>

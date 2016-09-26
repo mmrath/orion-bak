@@ -392,6 +392,13 @@
         <type>jar</type>
         <scope>compile</scope>
       </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>orion-common</artifactId>
+        <version>${project.version}</version>
+        <type>test-jar</type>
+        <scope>test</scope>
+      </dependency>
       
       <!-- QUERYDSL FRAMEWORK -->
       <dependency>
@@ -474,7 +481,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-test</artifactId>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -607,6 +613,8 @@
       <!-- PROPERTIES -->
       <properties>
         <skipTests>false</skipTests>
+        
+        <orion.profiles.active>testing, hsqldb</orion.profiles.active>
       </properties>
       
     </profile>

@@ -1,0 +1,73 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <property name="id.organization.01"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 001')" /> 
+    <property name="id.organization.02"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 002')" />
+    <property name="id.organization.03"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 003')" />
+    <property name="id.organization.04"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 004')" />
+    <property name="id.organization.05"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 005')" />
+    <property name="id.organization.06"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 006')" />
+    <property name="id.organization.07"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 007')" />
+    <property name="id.organization.08"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 008')" />
+    <property name="id.organization.09"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 009')" />
+    <property name="id.organization.10"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 010')" />
+    <property name="id.organization.11"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 011')" />
+    <property name="id.organization.12"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 012')" />
+    <property name="id.organization.13"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 013')" />
+    <property name="id.organization.14"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 014')" />
+    <property name="id.organization.15"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 015')" />
+    <property name="id.organization.16"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 016')" />
+    <property name="id.organization.17"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 017')" />
+    <property name="id.organization.18"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 018')" />
+    <property name="id.organization.19"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 019')" />
+    <property name="id.organization.20"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 020')" />
+    <property name="id.organization.21"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 021')" />
+    <property name="id.organization.22"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 022')" />
+    <property name="id.organization.23"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_ORGANIZATION WHERE ${table.prefix}_NAME = 'DUMMY ORGANIZATION 023')" />
+    
+    <!-- ROLES -->
+    <changeSet id="insert-dummy-groups" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="${table.prefix}_USER_GROUP" />
+		</preConditions>
+		
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_USER_GROUP(
+                ${table.prefix}_ORGANIZATION_ID,
+				${table.prefix}_NAME,
+                ${table.prefix}_LANDING_URL, 
+                ${table.prefix}_SCOPE,  
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				(${id.organization.01}, 'DUMMY_GROUP_001', '/dummy01', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.02}, 'DUMMY_GROUP_002', '/dummy02', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.03}, 'DUMMY_GROUP_003', '/dummy03', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.04}, 'DUMMY_GROUP_004', '/dummy04', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.05}, 'DUMMY_GROUP_005', '/dummy05', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.06}, 'DUMMY_GROUP_006', '/dummy06', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.07}, 'DUMMY_GROUP_007', '/dummy07', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.08}, 'DUMMY_GROUP_008', '/dummy08', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.09}, 'DUMMY_GROUP_009', '/dummy09', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.10}, 'DUMMY_GROUP_010', '/dummy10', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.11}, 'DUMMY_GROUP_011', '/dummy11', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.12}, 'DUMMY_GROUP_012', '/dummy12', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.13}, 'DUMMY_GROUP_013', '/dummy13', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.14}, 'DUMMY_GROUP_014', '/dummy14', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.15}, 'DUMMY_GROUP_015', '/dummy15', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.16}, 'DUMMY_GROUP_016', '/dummy16', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.17}, 'DUMMY_GROUP_017', '/dummy17', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.18}, 'DUMMY_GROUP_018', '/dummy18', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.19}, 'DUMMY_GROUP_019', '/dummy19', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.20}, 'DUMMY_GROUP_020', '/dummy20', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.21}, 'DUMMY_GROUP_021', '/dummy21', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.22}, 'DUMMY_GROUP_022', '/dummy22', 'ALL', 0, '${value.user}', '${value.user}'),
+				(${id.organization.23}, 'DUMMY_GROUP_023', '/dummy23', 'ALL', 0, '${value.user}', '${value.user}');
+		</sql>
+
+	</changeSet>
+	
+ </databaseChangeLog>

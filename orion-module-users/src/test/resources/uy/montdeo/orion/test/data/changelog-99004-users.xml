@@ -1,0 +1,138 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <property name="value.credentials" 		value="c29e2a712c9700e365577a1131f5689f70261dff794ffd31e3581dd8f4e9af5b5d4543144bebd353e53b3c1c23"  />
+    <property name="value.salt" 			value="3812441e93880044"  />
+    
+    <property name="id.group.dummy.01"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_001')" /> 
+    <property name="id.group.dummy.02"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_002')" />
+    <property name="id.group.dummy.03"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_003')" />
+    <property name="id.group.dummy.04"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_004')" />
+    <property name="id.group.dummy.05"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_005')" />
+    <property name="id.group.dummy.06"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_006')" />
+    <property name="id.group.dummy.07"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_007')" />
+    <property name="id.group.dummy.08"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_008')" />
+    <property name="id.group.dummy.09"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_009')" />
+    <property name="id.group.dummy.10"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_010')" />
+    <property name="id.group.dummy.11"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_011')" />
+    <property name="id.group.dummy.12"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_012')" />
+    <property name="id.group.dummy.13"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_013')" />
+    <property name="id.group.dummy.14"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_014')" />
+    <property name="id.group.dummy.15"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_015')" />
+    <property name="id.group.dummy.16"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_016')" />
+    <property name="id.group.dummy.17"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_017')" />
+    <property name="id.group.dummy.18"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_018')" />
+    <property name="id.group.dummy.19"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_019')" />
+    <property name="id.group.dummy.20"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_020')" />
+    <property name="id.group.dummy.21"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_021')" />
+    <property name="id.group.dummy.22"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_022')" />
+    <property name="id.group.dummy.23"	 	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_GROUP WHERE ${table.prefix}_NAME = 'DUMMY_GROUP_023')" />
+    
+    <property name="id.settings.dummy.01"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'es_ES')" />
+    <property name="id.settings.dummy.02"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'nb_NO')" />
+    <property name="id.settings.dummy.03"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'pt_PT')" />
+    <property name="id.settings.dummy.04"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'es_CO')" />
+    <property name="id.settings.dummy.05"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'es_MX')" />
+    <property name="id.settings.dummy.06"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'zh_CN')" />
+    <property name="id.settings.dummy.07"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'zh_TW')" />
+    <property name="id.settings.dummy.08"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'en_GB')" />
+    <property name="id.settings.dummy.09"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'en_US')" />
+    <property name="id.settings.dummy.10"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'fr_FR')" />
+    <property name="id.settings.dummy.11"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'ar_SA')" />
+    <property name="id.settings.dummy.12"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'nl_NL')" />
+    <property name="id.settings.dummy.13"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'en_AU')" />
+    <property name="id.settings.dummy.14"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'en_CA')" />
+    <property name="id.settings.dummy.15"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'fr_CA')" />
+    <property name="id.settings.dummy.16"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'de_DE')" />
+    <property name="id.settings.dummy.17"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'he_IL')" />
+    <property name="id.settings.dummy.18"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'hi_IN')" />
+    <property name="id.settings.dummy.19"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'it_IT')" />
+    <property name="id.settings.dummy.20"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'ja_JP')" />
+    <property name="id.settings.dummy.21"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'pt_BR')" />
+    <property name="id.settings.dummy.22"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'sv_SE')" />
+    <property name="id.settings.dummy.23"	value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_USER_SETTINGS WHERE ${table.prefix}_LOCALE = 'th_TH')" />
+    
+    
+    <!-- USERS -->
+    <changeSet id="insert-dummy-users" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="${table.prefix}_USER" />
+		</preConditions>
+		
+		<sql endDelimiter=";">
+		
+			INSERT INTO ${table.prefix}_USER_SETTINGS(
+				${table.prefix}_LOCALE,
+				${table.prefix}_TIMEZONE, 
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				('es_ES', 'Europe/Madrid', 0, '${value.user}', '${value.user}'),
+				('pt_PT', 'Europe/Lisbon', 0, '${value.user}', '${value.user}'),
+				('es_CO', 'America/Bogota', 0, '${value.user}', '${value.user}'),
+				('es_MX', 'America/Mexico_City', 0, '${value.user}', '${value.user}'),
+				('zh_CN', 'Asia/Shanghai', 0, '${value.user}', '${value.user}'),
+				('zh_TW', 'Asia/Taipei', 0, '${value.user}', '${value.user}'),
+				('en_GB', 'Europe/London', 0, '${value.user}', '${value.user}'),
+				('en_US', 'US/Eastern', 0, '${value.user}', '${value.user}'),
+				('fr_FR', 'Europe/Paris', 0, '${value.user}', '${value.user}'),
+				('ar_SA', 'Asia/Riyadh', 0, '${value.user}', '${value.user}'),
+				('nl_NL', 'Europe/Amsterdam', 0, '${value.user}', '${value.user}'),
+				('en_AU', 'Australia/Sydney', 0, '${value.user}', '${value.user}'),
+				('en_CA', 'Canada/Eastern', 0, '${value.user}', '${value.user}'),
+				('fr_CA', 'Canada/Pacific', 0, '${value.user}', '${value.user}'),
+				('de_DE', 'Europe/Berlin', 0, '${value.user}', '${value.user}'),
+				('he_IL', 'Asia/Tel_Aviv', 0, '${value.user}', '${value.user}'),
+				('hi_IN', 'Asia/Calcutta', 0, '${value.user}', '${value.user}'),
+				('it_IT', 'Europe/Rome', 0, '${value.user}', '${value.user}'),
+				('ja_JP', 'Asia/Tokyo', 0, '${value.user}', '${value.user}'),
+				('pt_BR', 'America/Sao_Paulo', 0, '${value.user}', '${value.user}'),
+				('sv_SE', 'Europe/Stockholm', 0, '${value.user}', '${value.user}'),
+				('th_TH', 'Asia/Bangkok', 0, '${value.user}', '${value.user}'),
+				('nb_NO', 'Europe/Oslo', 0, '${value.user}', '${value.user}');
+								
+			INSERT INTO ${table.prefix}_USER(
+				${table.prefix}_GROUP_ID, 
+				${table.prefix}_SETTINGS_ID,
+				${table.prefix}_USERNAME,
+				${table.prefix}_CREDENTIALS,
+				${table.prefix}_SALT,
+				${table.prefix}_LOCKED,
+				${table.prefix}_DELETED,
+				${table.prefix}_ATTEMPTS,
+				${table.prefix}_COMMENTS, 
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				(${id.group.dummy.01}, ${id.settings.dummy.01}, 'dummy001@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 001', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.02}, ${id.settings.dummy.02}, 'dummy002@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 002', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.03}, ${id.settings.dummy.03}, 'dummy003@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 003', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.04}, ${id.settings.dummy.04}, 'dummy004@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 004', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.05}, ${id.settings.dummy.05}, 'dummy005@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 005', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.06}, ${id.settings.dummy.06}, 'dummy006@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 006', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.07}, ${id.settings.dummy.07}, 'dummy007@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 007', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.08}, ${id.settings.dummy.08}, 'dummy008@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 008', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.09}, ${id.settings.dummy.09}, 'dummy009@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 009', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.10}, ${id.settings.dummy.10}, 'dummy010@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 010', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.11}, ${id.settings.dummy.11}, 'dummy011@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 011', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.12}, ${id.settings.dummy.12}, 'dummy012@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 012', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.13}, ${id.settings.dummy.13}, 'dummy013@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 013', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.14}, ${id.settings.dummy.14}, 'dummy014@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 014', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.15}, ${id.settings.dummy.15}, 'dummy015@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 015', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.16}, ${id.settings.dummy.16}, 'dummy016@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 016', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.17}, ${id.settings.dummy.17}, 'dummy017@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 017', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.18}, ${id.settings.dummy.18}, 'dummy018@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 018', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.19}, ${id.settings.dummy.19}, 'dummy019@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 019', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.20}, ${id.settings.dummy.20}, 'dummy020@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 020', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.21}, ${id.settings.dummy.21}, 'dummy021@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 021', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.22}, ${id.settings.dummy.22}, 'dummy022@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 022', 0, '${value.user}', '${value.user}'),
+				(${id.group.dummy.23}, ${id.settings.dummy.23}, 'dummy023@kudos.uy', '${value.credentials}', '${value.salt}', false, false, 0, 'DUMMY USER 023', 0, '${value.user}', '${value.user}');
+		</sql>
+		
+	</changeSet>
+	
+ </databaseChangeLog>

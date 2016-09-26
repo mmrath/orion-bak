@@ -1,0 +1,51 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <!-- PERSONS -->
+    <changeSet id="insert-dummy-persons" author="fabian.lobo">
+    	<preConditions onFail="MARK_RAN">
+			<tableExists tableName="${table.prefix}_PERSON" />
+		</preConditions>
+		
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_PERSON(
+				${table.prefix}_LAST_NAME, 
+				${table.prefix}_FIRST_NAME, 
+				${table.prefix}_MIDDLE_NAME,
+				${table.prefix}_SECOND_NAME,  
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				('DUMMY LAST NAME 001', 'DUMMY FIRST NAME 001', 'DUMMY MIDDLE NAME 001', 'DUMMY SECOND NAME 001', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 002', 'DUMMY FIRST NAME 002', 'DUMMY MIDDLE NAME 002', 'DUMMY SECOND NAME 002', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 003', 'DUMMY FIRST NAME 003', 'DUMMY MIDDLE NAME 003', 'DUMMY SECOND NAME 003', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 004', 'DUMMY FIRST NAME 004', 'DUMMY MIDDLE NAME 004', 'DUMMY SECOND NAME 004', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 005', 'DUMMY FIRST NAME 005', 'DUMMY MIDDLE NAME 005', 'DUMMY SECOND NAME 005', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 006', 'DUMMY FIRST NAME 006', 'DUMMY MIDDLE NAME 006', 'DUMMY SECOND NAME 006', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 007', 'DUMMY FIRST NAME 007', 'DUMMY MIDDLE NAME 007', 'DUMMY SECOND NAME 007', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 008', 'DUMMY FIRST NAME 008', 'DUMMY MIDDLE NAME 008', 'DUMMY SECOND NAME 008', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 009', 'DUMMY FIRST NAME 009', 'DUMMY MIDDLE NAME 009', 'DUMMY SECOND NAME 009', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 010', 'DUMMY FIRST NAME 010', 'DUMMY MIDDLE NAME 010', 'DUMMY SECOND NAME 010', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 011', 'DUMMY FIRST NAME 011', 'DUMMY MIDDLE NAME 011', 'DUMMY SECOND NAME 011', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 012', 'DUMMY FIRST NAME 012', 'DUMMY MIDDLE NAME 012', 'DUMMY SECOND NAME 012', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 013', 'DUMMY FIRST NAME 013', 'DUMMY MIDDLE NAME 013', 'DUMMY SECOND NAME 013', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 014', 'DUMMY FIRST NAME 014', 'DUMMY MIDDLE NAME 014', 'DUMMY SECOND NAME 014', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 015', 'DUMMY FIRST NAME 015', 'DUMMY MIDDLE NAME 015', 'DUMMY SECOND NAME 015', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 016', 'DUMMY FIRST NAME 016', 'DUMMY MIDDLE NAME 016', 'DUMMY SECOND NAME 016', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 017', 'DUMMY FIRST NAME 017', 'DUMMY MIDDLE NAME 017', 'DUMMY SECOND NAME 017', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 018', 'DUMMY FIRST NAME 018', 'DUMMY MIDDLE NAME 018', 'DUMMY SECOND NAME 018', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 019', 'DUMMY FIRST NAME 019', 'DUMMY MIDDLE NAME 019', 'DUMMY SECOND NAME 019', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 020', 'DUMMY FIRST NAME 020', 'DUMMY MIDDLE NAME 020', 'DUMMY SECOND NAME 020', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 021', 'DUMMY FIRST NAME 021', 'DUMMY MIDDLE NAME 021', 'DUMMY SECOND NAME 021', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 022', 'DUMMY FIRST NAME 022', 'DUMMY MIDDLE NAME 022', 'DUMMY SECOND NAME 022', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 023', 'DUMMY FIRST NAME 023', 'DUMMY MIDDLE NAME 023', 'DUMMY SECOND NAME 023', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 024', 'DUMMY FIRST NAME 024', 'DUMMY MIDDLE NAME 024', 'DUMMY SECOND NAME 024', 0, '${value.user}', '${value.user}'),
+				('DUMMY LAST NAME 025', 'DUMMY FIRST NAME 025', 'DUMMY MIDDLE NAME 025', 'DUMMY SECOND NAME 025', 0, '${value.user}', '${value.user}');
+		</sql>
+			
+	</changeSet>
+	
+ </databaseChangeLog>

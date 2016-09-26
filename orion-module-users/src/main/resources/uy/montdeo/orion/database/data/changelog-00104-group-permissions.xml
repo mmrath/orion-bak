@@ -4,7 +4,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
        
     <!-- RELATIONSHIP BETWEEN GROUPS AND PERMISSIONS -->
-	<changeSet id="insert-groups-permissions" author="fabian.lobo">
+	<changeSet id="insert-group-permissions" author="fabian.lobo">
 		<preConditions onFail="MARK_RAN">
 			<and>
 				<tableExists tableName="${table.prefix}_USER_GROUP_PERMISSIONS" />
@@ -12,7 +12,7 @@
 			</and>
 		</preConditions>
 
-		<!-- PERMISSIONS FOR THE ADMINISTRATOR ROLE -->
+		<!-- PERMISSIONS FOR THE ADMINISTRATOR GROUP -->
 		<sql endDelimiter=";">
 			INSERT INTO ${table.prefix}_USER_GROUP_PERMISSIONS 
                 SELECT g.${table.prefix}_ID AS ${table.prefix}_USER_GROUP_ID, p.${table.prefix}_ID AS ${table.prefix}_PERMISSIONS_ID 
@@ -21,7 +21,7 @@
                 ORDER BY p.${table.prefix}_ID ASC;
 		</sql>
 
-		<!-- PERMISSIONS FOR THE GUEST ROLE -->
+		<!-- PERMISSIONS FOR THE GUEST GROUP -->
 		<sql endDelimiter=";">
 			INSERT INTO ${table.prefix}_USER_GROUP_PERMISSIONS 
                 SELECT g.${table.prefix}_ID AS ${table.prefix}_USER_GROUP_ID, p.${table.prefix}_ID AS ${table.prefix}_PERMISSIONS_ID 

@@ -1,0 +1,22 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <!-- RELATIONSHIP BETWEEN GROUPS AND PERMISSIONS -->
+	<changeSet id="insert-dummy-group-permissions" author="fabian.lobo">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="${table.prefix}_USER_GROUP_PERMISSIONS" />
+		</preConditions>
+
+		<!-- PERMISSIONS FOR THE DUMMY GROUPS -->
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_USER_GROUP_PERMISSIONS 
+                SELECT g.${table.prefix}_ID AS ${table.prefix}_USER_GROUP_ID, p.${table.prefix}_ID AS ${table.prefix}_PERMISSIONS_ID 
+                FROM ${table.prefix}_USER_GROUP_PERMISSION p, ${table.prefix}_USER_GROUP g  
+                WHERE g.${table.prefix}_NAME LIKE 'DUMMY_GROUP' AND p.${table.prefix}_TOKEN LIKE 'DUMMY_PERMISSION' 
+                ORDER BY p.${table.prefix}_ID ASC;
+		</sql>
+	</changeSet>
+	
+ </databaseChangeLog>

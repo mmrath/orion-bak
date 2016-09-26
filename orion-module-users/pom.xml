@@ -36,6 +36,11 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>orion-common</artifactId>
     </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>orion-common</artifactId>
+      <type>test-jar</type>
+    </dependency>
     
     <!-- SPRING BOOT STARTERS -->
     <dependency>

@@ -1,0 +1,88 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+       
+    <property name="id.country.uy"  value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_COUNTRY WHERE ${table.prefix}_ALPHA2CODE = 'UY')" />
+    <property name="id.country.ar"  value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_COUNTRY WHERE ${table.prefix}_ALPHA2CODE = 'AR')" />
+    <property name="id.country.br"  value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_COUNTRY WHERE ${table.prefix}_ALPHA2CODE = 'BR')" />
+    
+    <property name="id.doctype.ci"     value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'CI')" />
+    <property name="id.doctype.rut"    value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'RUT')" />
+    <property name="id.doctype.pass"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'PASSPORT')" />
+    <property name="id.doctype.cpf"    value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'CPF')" />
+    <property name="id.doctype.cnpj"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'CNPJ')" />
+    <property name="id.doctype.dni"    value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_DOCUMENT_TYPE WHERE ${table.prefix}_CODE = 'DNI')" />
+    
+    <property name="id.person.01"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 001')" /> 
+    <property name="id.person.02"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 002')" />
+    <property name="id.person.03"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 003')" />
+    <property name="id.person.04"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 004')" />
+    <property name="id.person.05"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 005')" />
+    <property name="id.person.06"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 006')" />
+    <property name="id.person.07"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 007')" />
+    <property name="id.person.08"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 008')" />
+    <property name="id.person.09"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 009')" />
+    <property name="id.person.10"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 010')" />
+    <property name="id.person.11"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 011')" />
+    <property name="id.person.12"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 012')" />
+    <property name="id.person.13"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 013')" />
+    <property name="id.person.14"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 014')" />
+    <property name="id.person.15"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 015')" />
+    <property name="id.person.16"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 016')" />
+    <property name="id.person.17"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 017')" />
+    <property name="id.person.18"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 018')" />
+    <property name="id.person.19"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 019')" />
+    <property name="id.person.20"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 020')" />
+    <property name="id.person.21"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 021')" />
+    <property name="id.person.22"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 022')" />
+    <property name="id.person.23"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 023')" />
+    <property name="id.person.24"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 024')" />
+    <property name="id.person.25"   value="(SELECT ${table.prefix}_ID FROM ${table.prefix}_PERSON WHERE ${table.prefix}_LAST_NAME = 'DUMMY LAST NAME 025')" />
+    
+    <!-- DOCUMENTS -->
+    <changeSet id="insert-dummy-documents" author="fabian.lobo">
+    	<preConditions onFail="MARK_RAN">
+			<tableExists tableName="${table.prefix}_DOCUMENT" />
+		</preConditions>
+		
+		<sql endDelimiter=";">
+			INSERT INTO ${table.prefix}_DOCUMENT(
+				${table.prefix}_COUNTRY_ID,
+                ${table.prefix}_TYPE_ID,
+                ${table.prefix}_PERSON_ID,
+                ${table.prefix}_VALUE,        
+				${table.prefix}_VERSION,
+				${table.prefix}_CREATED_BY,
+				${table.prefix}_LAST_MODIFIED_BY
+			) VALUES
+				(${id.country.uy}, ${id.doctype.ci}, ${id.person.01}, '01.111.111-1', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.ci}, ${id.person.02}, '99.999.999-8', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.ci}, ${id.person.03}, '99.999.999-7', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.ci}, ${id.person.04}, '99.999.999-6', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.ci}, ${id.person.05}, '99.999.999-5', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.rut}, ${id.person.06}, '999.999.999.999', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.rut}, ${id.person.07}, '999.999.999.998', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.rut}, ${id.person.08}, '999.999.999.997', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.pass}, ${id.person.09}, '99.999.999-9', 0, '${value.user}', '${value.user}'),
+				(${id.country.uy}, ${id.doctype.pass}, ${id.person.10}, '99.999.999-8', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, ${id.person.11}, '99.999.999-9', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, ${id.person.12}, '99.999.999-8', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, ${id.person.13}, '99.999.999-7', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, ${id.person.14}, '99.999.999-6', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, ${id.person.15}, '99.999.999-5', 0, '${value.user}', '${value.user}'),
+				(${id.country.ar}, ${id.doctype.dni}, ${id.person.16}, '99.999.999-4', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cpf}, ${id.person.17}, '999.999.999-99', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cpf}, ${id.person.18}, '999.999.999-98', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cpf}, ${id.person.19}, '999.999.999-97', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cpf}, ${id.person.20}, '999.999.999-96', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cpf}, ${id.person.21}, '999.999.999-95', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cnpj}, ${id.person.22}, '99.999.999/9999-99', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cnpj}, ${id.person.23}, '99.999.999/9999-98', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cnpj}, ${id.person.24}, '99.999.999/9999-97', 0, '${value.user}', '${value.user}'),
+				(${id.country.br}, ${id.doctype.cnpj}, ${id.person.25}, '99.999.999/9999-96', 0, '${value.user}', '${value.user}');
+		</sql>
+			
+	</changeSet>
+	
+ </databaseChangeLog>
