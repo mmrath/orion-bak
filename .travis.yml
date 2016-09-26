@@ -5,3 +5,15 @@ sudo: true
 script: ./mvnw clean install -Phsqldb,testing
 before_install:
   - chmod +x mvnw
+  - mkdir /logs/orion
+addons:
+  hosts:
+  - consul.orion.uy
+  - database.orion.uy
+  - budget.orion.uy
+  - catalog.orion.uy
+  - finance.orion.uy
+  - people.orion.uy
+  - store.orion.uy
+  - users.orion.uy
+  - warehouse.orion.uy
