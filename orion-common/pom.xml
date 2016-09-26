@@ -111,6 +111,26 @@
       <artifactId>thymeleaf-spring4</artifactId>
     </dependency>
     
+    <!-- CONSUL API -->
+    <dependency>
+      <groupId>com.ecwid.consul</groupId>
+      <artifactId>consul-api</artifactId>
+    </dependency>
+    
+    <!-- HAZELCAST FRAMEWORK -->
+    <dependency>
+      <groupId>com.hazelcast</groupId>
+      <artifactId>hazelcast</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.hazelcast</groupId>
+      <artifactId>hazelcast-hibernate4</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.hazelcast</groupId>
+      <artifactId>hazelcast-spring</artifactId>
+    </dependency>    
+    
     <!-- QUERYDSL FRAMEWORK -->
     <dependency>
       <groupId>com.mysema.querydsl</groupId>

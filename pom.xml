@@ -67,6 +67,7 @@
     
     <!-- DEPENDENCIES -->
     <bootstrap.version>3.3.6</bootstrap.version>
+    <consul.version>1.1.10</consul.version>
     <liquibase.version>3.4.2</liquibase.version>
     <querydsl.version>3.7.3</querydsl.version>
     <querydsl-hql.version>1.9.7</querydsl-hql.version>
@@ -436,6 +437,13 @@
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-consul</artifactId>
         <version>${spring-consul.version}</version>
+        <type>jar</type>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.ecwid.consul</groupId>
+        <artifactId>consul-api</artifactId>
+        <version>${consul.version}</version>
         <type>jar</type>
         <scope>compile</scope>
       </dependency>

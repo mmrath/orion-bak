@@ -16,6 +16,7 @@ This project was created based on the following Java technologies:
 - Spring HATEOAS v0.20.0
 - Apache Tomcat v8.0.36
 - HashiCorp Consul v0.7.0
+- Hazelcast v3.6.4
 
 This project supports the following databases:
 
